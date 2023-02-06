@@ -17,6 +17,11 @@ class Authminuman extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoadingCreatefood = false.obs;
 
+  TextEditingController idC = TextEditingController();
+  TextEditingController namaC = TextEditingController();
+  TextEditingController hargaC = TextEditingController();
+  String? selectedValue;
+
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   s.FirebaseStorage storage = s.FirebaseStorage.instance;
@@ -27,6 +32,50 @@ class Authminuman extends GetxController {
 
   //   return minuman.get();
   // }
+
+  //menampilkan dtabse di editmenu
+  Future<DocumentSnapshot<Object?>> getData(String docID) async {
+    DocumentReference edRef = firestore.collection("Minuman").doc(docID);
+    return edRef.get();
+  }
+
+  //mengupdate menu
+  void editproduct(String id, String nama, String harga, String docID) async {
+    DocumentReference docData = firestore.collection("Minuman").doc(docID);
+    try {
+      if (image != null) {
+        // upload avatar image to storage
+        File file = File(image!.path);
+        await storage.ref(id).putFile(file);
+      }
+      String avatarUrl = await storage.ref(id).getDownloadURL();
+      await docData.update({
+        "id": id,
+        "nama": nama,
+        "harga": harga,
+        "typeuser": selectedValue.toString(),
+        "profil": avatarUrl,
+        "created_at": DateTime.now().toIso8601String(),
+      });
+      Get.defaultDialog(
+        title: "berhasil",
+        middleText: "Berhasil mengubah data produk",
+        onConfirm: () {
+          idC.clear();
+          namaC.clear();
+          hargaC.clear();
+          selectedValue = null;
+          image = null;
+          Get.back();
+          Get.back();
+        },
+      );
+    } catch (e) {
+      Get.defaultDialog(
+          title: "Terjadi kesalahan",
+          middleText: "Tidak berhasil mengubah data produk");
+    }
+  }
 
   Stream<QuerySnapshot<Object?>> streamData() {
     CollectionReference minuman = firestore.collection("Minuman");
@@ -46,5 +95,14 @@ class Authminuman extends GetxController {
       textConfirm: "YES",
       textCancel: "NO",
     );
+  }
+
+  void pickImage() async {
+    image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      print(image!.path);
+      print(image!.name.split(".").last);
+    }
+    update();
   }
 }

@@ -22,6 +22,7 @@ import 'package:kantin/login/binding/Binding.dart';
 import 'package:kantin/Manager/Editmenu/Tambahmenu/Tambahmenu.dart';
 import 'package:kantin/Manager/Editmenu/binding.dart';
 import 'package:kantin/Manager/Editmenu/EditMenu.dart';
+import 'package:kantin/Manager/Editmenu/Minuman/EditMenumin.dart';
 
 class AppPages {
   AppPages._();
@@ -30,8 +31,8 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.EDITMENU,
-      page: () => EditMenu(),
+      name: _Paths.EDITMENUMIN,
+      page: () => Editmenumin(),
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -77,7 +78,7 @@ class AppPages {
 
 abstract class Routes {
   Routes._();
-  static const EDITMENU = _Paths.EDITMENU;
+  static const EDITMENUMIN = _Paths.EDITMENUMIN;
   static const TAMBAHMENU = _Paths.TAMBAHMENU;
   static const HOMEMENUMANAGER = _Paths.HOMEMENUMANAGER;
   static const MENU = _Paths.MENU;
@@ -90,7 +91,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
-  static const EDITMENU = '/editmenu';
+  static const EDITMENUMIN = '/editmenumin';
   static const TAMBAHMENU = '/tambahmenu';
   static const HOMEMENUMANAGER = '/homemenumanager';
   static const MENU = '/menu';

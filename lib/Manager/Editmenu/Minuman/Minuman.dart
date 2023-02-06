@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Manager/Editmenu/Minuman/Authminuman.dart';
 import 'package:get/get.dart';
+import 'package:kantin/Routing/Routes.dart';
 
 class MinumanMen extends StatefulWidget {
   @override
@@ -142,18 +143,23 @@ class _MinumanMenState extends State<MinumanMen> {
                         SizedBox(
                           width: 40,
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: 150,
-                          height: 40,
-                          child: Text(
-                            "Edit",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17, color: Colors.white),
+                        GestureDetector(
+                          onTap: () => Get.toNamed(Routes.EDITMENUMIN,
+                              arguments: listmin[index].id),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            width: 150,
+                            height: 40,
+                            child: Text(
+                              "Edit",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(fontSize: 17, color: Colors.white),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 7, 204, 0),
+                                borderRadius: BorderRadius.circular(5)),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 7, 204, 0),
-                              borderRadius: BorderRadius.circular(5)),
                         ),
                       ],
                     ),

@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.EDITMENU,
+      initialRoute: Routes.HOMEMENUMANAGER,
       getPages: AppPages.routes,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

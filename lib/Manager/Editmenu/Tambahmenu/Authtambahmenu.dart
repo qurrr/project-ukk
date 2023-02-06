@@ -62,10 +62,19 @@ class EditMenuAuth extends GetxController {
         "profil": avatarUrl,
         "created_at": DateTime.now().toIso8601String(),
       });
-      image = null;
-      TostDialog.TostDil("Berhasil menambahkan makanan");
-      clearTextInput();
-      selectedValue = null;
+
+      Get.defaultDialog(
+        title: "berhasil",
+        middleText: "berhasil menabahkan produk",
+        onConfirm: () {
+          image = null;
+          clearTextInput();
+          selectedValue = null;
+          Get.back();
+        },
+        textConfirm: "YA",
+      );
+
       isLoadingCreatefood.value = false;
     } catch (e) {
       isLoadingCreatefood.value = false;
