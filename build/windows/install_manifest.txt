@@ -1,0 +1,10 @@
+C:/kelompok3/build/windows/runner/Debug/data/icudtl.dat
+C:/kelompok3/build/windows/runner/Debug/flutter_windows.dll
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/assets/logo.png
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/NOTICES
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/kelompok3/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf

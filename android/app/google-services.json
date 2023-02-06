@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "239748318084",
+    "project_id": "kasir-firebase-7a0ed",
+    "storage_bucket": "kasir-firebase-7a0ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239748318084:android:8ef5ffd09fbd2fdf6dd3d1",
+        "android_client_info": {
+          "package_name": "com.pembuatanprogram.kantin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239748318084-v3v1ibqam67nkghnnirlupddhju5ts8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6iC4hj4-B_XmgpYy0RRcRNk6zqXtFAmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239748318084-v3v1ibqam67nkghnnirlupddhju5ts8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
