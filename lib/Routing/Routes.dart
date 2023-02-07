@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:kantin/tambah user.dart';
+import 'package:kantin/admin/tambah%20user.dart';
 import '../login/Login1.dart';
-import '../Menu1.dart';
-import '../Keranjang1.dart';
+import '../Homemenu/Menu.dart';
+import '../Homemenu/Keranjang1.dart';
 import '../Kasir.dart';
 import '../Detailpesanan.dart';
 import '../Manager/Manager.dart';
 import '../Pendapatanharian.dart';
 import '../Catatantransaksi.dart';
 import '../Manager/Editmenu/HomeMenu.dart';
-import '../Admin.dart';
-import '../tambah user.dart';
+import '../admin/Admin.dart';
+import '../admin/tambah user.dart';
 import '../Edit user.dart';
-import '../log aktivitas.dart';
+import '../admin/log aktivitas.dart';
 import '../regist/Register1.dart';
 import '../regist/controller/authregist.dart';
 import '../regist/models/player.dart';
@@ -23,6 +23,10 @@ import 'package:kantin/Manager/Editmenu/Tambahmenu/Tambahmenu.dart';
 import 'package:kantin/Manager/Editmenu/binding.dart';
 import 'package:kantin/Manager/Editmenu/EditMenu.dart';
 import 'package:kantin/Manager/Editmenu/Minuman/EditMenumin.dart';
+import 'package:kantin/Manager/Editmenu/Makanan/Editmenumak.dart';
+import 'package:kantin/Manager/Editmenu/Coffe/Editmenucof.dart';
+import 'package:kantin/admin/controller/binding.dart';
+import 'package:kantin/Homemenu/bindinghomemenu.dart';
 
 class AppPages {
   AppPages._();
@@ -30,6 +34,32 @@ class AppPages {
   static const INITIAL = Routes.MENU;
 
   static final routes = [
+    GetPage(
+      name: _Paths.KERANJANG,
+      page: () => KeranjangPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.LOGAKTIV,
+      page: () => LogaktifitasPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.TAMBAHUSER,
+      page: () => TambahuserPage(),
+      transition: Transition.fadeIn,
+      binding: Tambahuserbinding(),
+    ),
+    GetPage(
+      name: _Paths.EDITMENUCOF,
+      page: () => Editmenucof(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.EDITMENUMAK,
+      page: () => Editmenumak(),
+      transition: Transition.fadeIn,
+    ),
     GetPage(
       name: _Paths.EDITMENUMIN,
       page: () => Editmenumin(),
@@ -45,6 +75,7 @@ class AppPages {
       name: _Paths.MENU,
       page: () => Menu1Page(),
       transition: Transition.fadeIn,
+      binding: Bindinghomenu(),
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -62,6 +93,7 @@ class AppPages {
       name: _Paths.ADMIN,
       page: () => AdminPage(),
       transition: Transition.fadeIn,
+      binding: Tambahuserbinding(),
     ),
     GetPage(
       name: _Paths.MANAGER,
@@ -78,6 +110,11 @@ class AppPages {
 
 abstract class Routes {
   Routes._();
+  static const KERANJANG = _Paths.KERANJANG;
+  static const LOGAKTIV = _Paths.LOGAKTIV;
+  static const TAMBAHUSER = _Paths.TAMBAHUSER;
+  static const EDITMENUCOF = _Paths.EDITMENUCOF;
+  static const EDITMENUMAK = _Paths.EDITMENUMAK;
   static const EDITMENUMIN = _Paths.EDITMENUMIN;
   static const TAMBAHMENU = _Paths.TAMBAHMENU;
   static const HOMEMENUMANAGER = _Paths.HOMEMENUMANAGER;
@@ -91,6 +128,11 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const KERANJANG = '/keranjang';
+  static const LOGAKTIV = '/logaktiv';
+  static const TAMBAHUSER = '/tambahuser';
+  static const EDITMENUCOF = '/editmenucof';
+  static const EDITMENUMAK = '/editmenumak';
   static const EDITMENUMIN = '/editmenumin';
   static const TAMBAHMENU = '/tambahmenu';
   static const HOMEMENUMANAGER = '/homemenumanager';

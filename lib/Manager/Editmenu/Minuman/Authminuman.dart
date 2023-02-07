@@ -72,8 +72,13 @@ class Authminuman extends GetxController {
       );
     } catch (e) {
       Get.defaultDialog(
-          title: "Terjadi kesalahan",
-          middleText: "Tidak berhasil mengubah data produk");
+        title: "Terjadi kesalahan",
+        middleText: "Tidak berhasil mengubah data produk",
+        textConfirm: "okey",
+        onConfirm: () {
+          Get.back();
+        },
+      );
     }
   }
 

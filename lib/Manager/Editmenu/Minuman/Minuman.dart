@@ -71,7 +71,7 @@ class _MinumanMenState extends State<MinumanMen> {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "${listmin[index].id}",
+                                "${(listmin[index].data() as Map<String, dynamic>)["id"]}",
                                 style: TextStyle(
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               )

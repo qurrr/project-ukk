@@ -101,7 +101,7 @@ class RegistController extends GetxController {
           DocumentReference respons =
               firestore.collection("pengguna").doc(iduser);
           respons.set({
-            "id": iduser,
+            "id_user": iduser,
             "nama": nameC.text,
             "email": emailC.text,
             "password": passC.text,

@@ -9,7 +9,13 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:kantin/Routing/Routes.dart';
 
-class Register1Page extends GetView<RegistController> {
+class Register1Page extends StatefulWidget {
+  @override
+  _Register1PageState createState() => _Register1PageState();
+}
+
+class _Register1PageState extends State<Register1Page> {
+  final controller = Get.find<RegistController>();
   final List<String> items = [
     'admin',
     'kasir',
@@ -218,12 +224,9 @@ class Register1Page extends GetView<RegistController> {
                                     .toList(),
                                 value: controller.selectedValue,
                                 onChanged: (value) {
-                                  if (controller.isLoading.isFalse) {
-                                    controller.selectedValue = value.toString();
-                                  }
-                                  // if (controller.isLoading.isFalse) {
-                                  // controller.selectedValue = value;
-                                  // }
+                                  setState(() {
+                                     controller.selectedValue = value.toString();
+                                  });
                                 },
                                 buttonHeight: 40,
                                 buttonWidth: 140,

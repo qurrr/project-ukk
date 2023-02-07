@@ -17,6 +17,11 @@ class Authcoffe extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoadingCreatefood = false.obs;
 
+  TextEditingController idC = TextEditingController();
+  TextEditingController namaC = TextEditingController();
+  TextEditingController hargaC = TextEditingController();
+  String? selectedValue;
+
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   s.FirebaseStorage storage = s.FirebaseStorage.instance;
@@ -33,6 +38,54 @@ class Authcoffe extends GetxController {
     return coffe.snapshots();
   }
 
+  //menampilkan db ke txtfield
+  Future<DocumentSnapshot<Object?>> getData(String docID) async {
+    DocumentReference edRef = firestore.collection("Coffe").doc(docID);
+    return edRef.get();
+  }
+
+  void editproduct(String id, String nama, String harga, String docID) async {
+    DocumentReference docData = firestore.collection("Coffe").doc(docID);
+    try {
+      if (image != null) {
+        // upload avatar image to storage
+        File file = File(image!.path);
+        await storage.ref(id).putFile(file);
+      }
+      String avatarUrl = await storage.ref(id).getDownloadURL();
+      await docData.update({
+        "id": id,
+        "nama": nama,
+        "harga": harga,
+        "typeuser": selectedValue.toString(),
+        "profil": avatarUrl,
+        "created_at": DateTime.now().toIso8601String(),
+      });
+      Get.defaultDialog(
+        title: "berhasil",
+        middleText: "Berhasil mengubah data produk",
+        onConfirm: () {
+          idC.clear();
+          namaC.clear();
+          hargaC.clear();
+          selectedValue = null;
+          image = null;
+          Get.back();
+          Get.back();
+        },
+      );
+    } catch (e) {
+      Get.defaultDialog(
+        title: "Terjadi kesalahan",
+        middleText: "Tidak berhasil mengubah data produk",
+        textConfirm: "okey",
+        onConfirm: () {
+          Get.back();
+        },
+      );
+    }
+  }
+
   void deleteProduct(String docId) {
     DocumentReference docRef = firestore.collection("Coffe").doc(docId);
 
@@ -46,5 +99,14 @@ class Authcoffe extends GetxController {
       textConfirm: "YES",
       textCancel: "NO",
     );
+  }
+
+  void pickImage() async {
+    image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      print(image!.path);
+      print(image!.name.split(".").last);
+    }
+    update();
   }
 }
