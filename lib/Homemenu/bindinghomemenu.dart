@@ -6,14 +6,14 @@ import 'package:get/instance_manager.dart';
 class Bindinghomenu extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<controlhomemin>(
-      () => controlhomemin(),
+    Get.lazyPut<Productcontrollerminuman>(
+      () => Productcontrollerminuman(),
     );
-    Get.lazyPut<controlhomemakanan>(
-      () => controlhomemakanan(),
+    Get.lazyPut<Productcontrollermakanan>(
+      () => Productcontrollermakanan(),
     );
-    Get.lazyPut<controlhomecoffe>(
-      () => controlhomecoffe(),
+    Get.lazyPut<Productcontrollercoffe>(
+      () => Productcontrollercoffe(),
     );
   }
 }
