@@ -3,6 +3,8 @@ import 'package:kantin/Homemenu/Makanan/controlhomemakanan.dart';
 import 'package:kantin/Homemenu/Coffe/controlhomecoffe.dart';
 import 'package:get/instance_manager.dart';
 
+import 'cart/controllercart.dart';
+
 class Bindinghomenu extends Bindings {
   @override
   void dependencies() {
@@ -14,6 +16,9 @@ class Bindinghomenu extends Bindings {
     );
     Get.lazyPut<Productcontrollercoffe>(
       () => Productcontrollercoffe(),
+    );
+    Get.lazyPut<CartController>(
+      () => CartController(),
     );
   }
 }

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/Homemenu/cart/controllercart.dart';
 
 import '../modelproduct.dart';
-
+final controller = Get.find<CartController>();
 class SingleProductWidget extends StatelessWidget {
   final ProductModel product;
+  
 
-  const SingleProductWidget({Key? key, required this.product}) : super(key: key);
+  const SingleProductWidget({Key? 
+  key, required this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,7 +90,9 @@ class SingleProductWidget extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    controller.addProductToCart(product);
+                  },
                   child: Container(
                     width: 70,
                     height: 30,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/Homemenu/cart/cartcontrol.dart';
+import 'package:kantin/Homemenu/cart/cartitem.dart';
 import 'package:kantin/Homemenu/cart/controllercart.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 
@@ -69,7 +71,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
             children: [
               Container(
                 padding: EdgeInsets.only(top: 20),
-                margin: EdgeInsets.symmetric(horizontal: 50),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 height: 40,
                 width: 30,
                 decoration: BoxDecoration(
@@ -103,7 +105,14 @@ class _KeranjangPageState extends State<KeranjangPage> {
               SizedBox(
                 height: 20,
               ),
-              CoffeP()
+              Obx(()=>Column(
+              children: cartController.Modelcart.map((CartItemModel cartItem) {
+          return CartItemWidget(
+            cartItem: cartItem,
+          );
+        }).toList(),
+            )),
+            SizedBox(height: 80,)
             ],
           ),
           Align(
