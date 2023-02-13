@@ -23,7 +23,6 @@ class KeranjangPage extends StatefulWidget {
 }
 
 class _KeranjangPageState extends State<KeranjangPage> {
-
   int _ongkir = 100;
   int _count = 1;
   int _selectedItemIndex = 0;
@@ -42,6 +41,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
@@ -105,14 +105,17 @@ class _KeranjangPageState extends State<KeranjangPage> {
               SizedBox(
                 height: 20,
               ),
-              Obx(()=>Column(
-              children: cartController.Modelcart.map((CartItemModel cartItem) {
-          return CartItemWidget(
-            cartItem: cartItem,
-          );
-        }).toList(),
-            )),
-            SizedBox(height: 80,)
+              Obx(() => Column(
+                    children:
+                        cartController.Modelcart.map((CartItemModel cartItem) {
+                      return CartItemWidget(
+                        cartItem: cartItem,
+                      );
+                    }).toList(),
+                  )),
+              SizedBox(
+                height: 80,
+              )
             ],
           ),
           Align(
@@ -139,7 +142,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "Rp 80.000",
+                          "Pay (\$${cartController.totalCartPrice.toStringAsFixed(2)})",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -165,134 +168,5 @@ class _KeranjangPageState extends State<KeranjangPage> {
             ),
           )
         ]));
-  }
-
-  Widget CoffeP() {
-    return Container(
-      padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.symmetric(horizontal: 35),
-      height: 90,
-      width: 180,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 255, 255, 255),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(73, 0, 0, 0),
-            offset: const Offset(
-              0.0,
-              0.0,
-            ),
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-          ), //BoxShadow
-          BoxShadow(
-            color: Colors.black,
-            offset: const Offset(0.0, 0.0),
-            blurRadius: 0.0,
-            spreadRadius: 0.0,
-          ), //BoxShadow
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 65,
-            width: 65,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(80),
-              image: DecorationImage(
-                image: AssetImage("assets/food/mie ayam.jpeg"),
-                fit: BoxFit.cover,
-              ),
-              color: Colors.red,
-            ),
-          ),
-          SizedBox(
-            width: 7,
-          ),
-          Container(
-            height: 80,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Mie ayam",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                Text(
-                  "Makanan",
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                  ),
-                ),
-                Text(
-                  "Rp.8.000",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 24, 38, 88),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 130,
-            height: 80,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "f01",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Color.fromARGB(255, 24, 38, 88),
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      top: 19,
-                    ),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          IconButton(
-                              onPressed: _incrementCount,
-                              icon: Icon(
-                                Icons.do_disturb_on_sharp,
-                                size: 25,
-                                color: Color.fromARGB(255, 24, 38, 88),
-                              )),
-                          Container(
-                            width: 20,
-                            child: Text(
-                              "${_count}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          IconButton(
-                              onPressed: _decrementCount,
-                              icon: Icon(
-                                Icons.add_circle_rounded,
-                                size: 25,
-                                color: Color.fromARGB(255, 24, 38, 88),
-                              )),
-                        ]),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
   }
 }

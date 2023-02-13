@@ -7,6 +7,8 @@ import 'package:kantin/Homemenu/Makanan/Makanan.dart';
 import 'package:kantin/Homemenu/Coffe/Coffe.dart';
 import 'package:kantin/Routing/Routes.dart';
 
+import 'cart/controllercart.dart';
+
 class SocialMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class _Menu1PageState extends State<Menu1Page> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));

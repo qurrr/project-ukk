@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class ProductModel {
   static const ID = "id";
   static const NAMA = "nama";
@@ -8,10 +10,11 @@ class ProductModel {
   String? id;
   String? name;
   String? category;
-  String? harga;
+  late int harga;
   String? foto;
 
-  ProductModel({this.id, this.name, this.category, this.harga, this.foto});
+  ProductModel(
+      {this.id, this.name, this.category, required this.harga, this.foto});
 
   ProductModel.fromMap(Map<String, dynamic> data) {
     id = data[ID];

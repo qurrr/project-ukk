@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
-
 
 class CartItemWidget extends StatelessWidget {
   final CartItemModel cartItem;
@@ -9,9 +9,9 @@ class CartItemWidget extends StatelessWidget {
   const CartItemWidget({Key? key, required this.cartItem}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-return Container(
+    return Container(
       padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.only(bottom: 15,left: 8,right: 8),
+      margin: EdgeInsets.only(bottom: 15, left: 8, right: 8),
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(15),
@@ -43,8 +43,8 @@ return Container(
               borderRadius: BorderRadius.circular(80),
               image: DecorationImage(
                 image: NetworkImage(
-                    cartItem.image.toString(),
-                  ),
+                  cartItem.image.toString(),
+                ),
                 fit: BoxFit.cover,
               ),
               color: Colors.red,
@@ -105,31 +105,41 @@ return Container(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           // IconButton(
-                              // onPressed: _incrementCount,
-                              // icon: 
-                              Icon(
-                                Icons.do_disturb_on_sharp,
-                                size: 25,
-                                color: Color.fromARGB(255, 24, 38, 88),
-                              ),
-                              // ),
+                          // onPressed: _incrementCount,
+                          // icon:
+                          IconButton(
+                            onPressed: () {
+                              cartController.decreaseQuantity(cartItem);
+                            },
+                            icon: Icon(
+                              Icons.do_disturb_on_sharp,
+                              size: 25,
+                              color: Color.fromARGB(255, 24, 38, 88),
+                            ),
+                          ),
+                          // ),
                           Container(
                             width: 20,
                             child: Text(
-                              "1",
+                              cartItem.quantity.toString(),
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           // IconButton(
                           //     onPressed: _decrementCount,
-                          //     icon: 
-                              Icon(
-                                Icons.add_circle_rounded,
-                                size: 25,
-                                color: Color.fromARGB(255, 24, 38, 88),
-                              ),
-                              // ),
+                          //     icon:
+                          IconButton(
+                            onPressed: () {
+                              cartController.increaseQuantity(cartItem);
+                            },
+                            icon: Icon(
+                              Icons.add_circle_rounded,
+                              size: 25,
+                              color: Color.fromARGB(255, 24, 38, 88),
+                            ),
+                          ),
+                          // ),
                         ]),
                   ),
                 )
