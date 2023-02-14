@@ -1,3 +1,5 @@
+import 'package:kantin/Homemenu/cart/modelcart.dart';
+
 class PaymentsModel {
   static const NAMA = "nama";
   static const CART = "cart";
@@ -7,7 +9,7 @@ class PaymentsModel {
 
   late String nama;
   late String total;
-  late String status;
+  late int status;
   late int createdAt;
   late List cart;
 
@@ -23,6 +25,16 @@ class PaymentsModel {
     createdAt = data[CREATED_AT];
     total = data[TOTAL];
     status = data[STATUS];
-    cart = data[CART];
+    cart = _convertCartItems(data[CART] ?? []);
   }
+    List<CartItemModel> _convertCartItems(List cartFomDb){
+    List<CartItemModel> _result = [];
+    if(cartFomDb.length > 0){
+      cartFomDb.forEach((element) {
+      _result.add(CartItemModel.fromMap(element));
+    });
+    }
+    return _result;
+  }
+   List cartItemsToJson() => cart.map((item) => item.toJson()).toList();
 }

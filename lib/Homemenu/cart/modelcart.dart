@@ -5,26 +5,25 @@ class CartItemModel {
   static const IMAGE = "image";
   static const NAME = "name";
   static const QUANTITY = "quantity";
-  static const COST = "cost";
   static const PRICE = "price";
   static const CATEGORY = "category";
 
-  late String id;
-  late String image;
-  late String name;
-  late int quantity;
-  late double cost;
-  late int price;
-  late String category;
+  late String? id;
+  late String? image;
+  late String? name;
+  late int? quantity;
+  late int? price;
+  late int? subTotal;
+  late String? category;
 
   CartItemModel({
-    required this.category,
-    required this.id,
-    required this.image,
-    required this.name,
-    required this.quantity,
-    required this.price,
-    required this.cost,
+    this.category,
+    this.id,
+    this.image,
+    this.name,
+    this.quantity,
+    this.price,
+    this.subTotal,
   });
 
   CartItemModel.fromMap(Map<String, dynamic> data) {
@@ -32,7 +31,6 @@ class CartItemModel {
     image = data[IMAGE];
     name = data[NAME];
     quantity = data[QUANTITY];
-    cost = data[COST].toDouble();
     price = data[PRICE];
     category = data[CATEGORY];
   }
@@ -43,7 +41,6 @@ class CartItemModel {
         IMAGE: image,
         NAME: name,
         QUANTITY: quantity,
-        COST: price * quantity,
         PRICE: price
       };
 }

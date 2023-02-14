@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kantin/Homemenu/Coffe/controlhomecoffe.dart';
+import 'package:kantin/Homemenu/Coffe/productsingle.dart';
 import 'package:kantin/Homemenu/cart/Keranjang1.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
@@ -18,14 +19,12 @@ import '../modelproduct.dart';
 class CartController extends GetxController {
   TextEditingController nameC = TextEditingController();
   RxList<CartItemModel> Modelcart = RxList<CartItemModel>([]);
+  Rx<CartItemModel> cartmodel = CartItemModel().obs;
   static CartController instance = Get.find();
-  RxBool obsecureText = true.obs;
-  RxBool isLoading = false.obs;
-  double totalCartPrice = 0;
-  List<CartItemModel> checkOutModelList = [];
+  int totalCartPrice = 0;
   final now = new DateTime.now();
 
-  TextEditingController nameoelangganC = TextEditingController();
+  TextEditingController namapelangganC = TextEditingController();
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -92,7 +91,8 @@ class CartController extends GetxController {
       docRef.delete();
     } else {
       removeCartItem(item);
-      item.quantity--;
+      if (item != null) item.quantity = item.quantity! - 1;
+      // item.quantity --;
       FirebaseFirestore.instance.collection("Cart").doc(item.id).update({
         "quantity": item.quantity,
       });
@@ -101,29 +101,48 @@ class CartController extends GetxController {
 
   void increaseQuantity(CartItemModel item) {
     // removeCartItem(item);
-    item.quantity++;
+    if (item != null) item.quantity = item.quantity! + 1;
+    // item.quantity++;
     logger.i({"quantity": item.quantity});
     FirebaseFirestore.instance.collection("Cart").doc(item.id).update({
       "quantity": item.quantity,
     });
   }
 
-  void paymentAdd(CartItemModel cartItem) {
+  List<CartItemModel> checkOutModelList = [];
+  void paymentAdd() {
     try {
-      if (nameC.text.isNotEmpty) {
-        DocumentReference respons =
-            firestore.collection("Transaksi").doc(nameC.text);
-        respons.set({
-          "nama": nameoelangganC.text,
-          "cart": cartItem.toJson(),
-          "total": subTotal,
-          "status": "0",
-          "createdAt": DateFormat('yMd').format(now),
-        });
-      }
+      // if (nameC.text.isNotEmpty) {
+
+      DocumentReference respons =
+          firestore.collection("Transaksi").doc(namapelangganC.text);
+      respons.set({
+        "nama": namapelangganC.text,
+        "total": totalCartPrice,
+        "status": 0,
+        "createdAt": DateTime.now().toIso8601String(),
+        "cart": Modelcart.map((data) => data.toJson()).toList(),
+      });
+      delete();
+
+      // }
     } catch (e) {
       Get.snackbar("Error", "gagal melakukan transaksi");
       debugPrint(e.toString());
     }
   }
+
+  Future<void> delete() async {
+    var collection = FirebaseFirestore.instance.collection("Cart");
+    var snapshot = await collection.get();
+    for (var doc in snapshot.docs) {
+      await doc.reference.delete();
+    }
+  }
+  // Stream<List<CartItemModel>> Deletecart() => FirebaseFirestore.instance
+  //     .collection("Cart")
+  //     .snapshots()
+  //     .map((query) => query.docs
+  //         .map((item) => CartItemModel.fromMap(item.data()))
+  //         .toList());
 }

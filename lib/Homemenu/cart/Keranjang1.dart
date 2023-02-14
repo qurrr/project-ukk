@@ -12,21 +12,16 @@ class KeranjangPage extends StatefulWidget {
   _KeranjangPageState createState() => _KeranjangPageState();
 }
 
-double subTotal = 0;
-
 class _KeranjangPageState extends State<KeranjangPage> {
-  final CartItemModel  cartItem;
+  Rx<CartItemModel> cartmodel = CartItemModel().obs;
   @override
   Widget build(BuildContext context) {
-    
-    double subTotal = 0;
-
     cartController.Modelcart.forEach((element) {
-      subTotal += element.price * element.quantity;
+      cartmodel.value.subTotal += element.price! * element.quantity!;
     });
 
     if (cartController.Modelcart.isEmpty) {
-      subTotal = 0;
+      cartmodel.value.subTotal = 0;
     }
     Get.put(CartController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -83,6 +78,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                   ],
                 ),
                 child: TextField(
+                  controller: cartController.namapelangganC,
                   decoration: InputDecoration(
                     hintText: "Isi dengan nama anda",
                     border: OutlineInputBorder(borderSide: BorderSide.none),
@@ -129,7 +125,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "\$ ${subTotal.toStringAsFixed(2)}",
+                          "\$ ${cartmodel.value.subTotal.toStringAsFixed(2)}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -143,7 +139,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      paymentAdd(cartItem)
+                      cartController.paymentAdd();
                     },
                     child: Text("bayar",
                         style: TextStyle(
