@@ -14,7 +14,7 @@ class CartItemModel {
   late String name;
   late int quantity;
   late double cost;
-  late double price;
+  late int price;
   late String category;
 
   CartItemModel({
@@ -33,7 +33,7 @@ class CartItemModel {
     name = data[NAME];
     quantity = data[QUANTITY];
     cost = data[COST].toDouble();
-    price = data[PRICE].toDouble();
+    price = data[PRICE];
     category = data[CATEGORY];
   }
 

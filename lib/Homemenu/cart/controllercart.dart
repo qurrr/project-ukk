@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:kantin/Homemenu/Coffe/controlhomecoffe.dart';
+import 'package:kantin/Homemenu/cart/Keranjang1.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 import 'package:kantin/toats/dialogtoast.dart';
@@ -14,15 +16,16 @@ import '../constlog.dart';
 import '../modelproduct.dart';
 
 class CartController extends GetxController {
-  // Rx<CartItemModel> Modelcartt = CartItemModel().obs;
+  TextEditingController nameC = TextEditingController();
   RxList<CartItemModel> Modelcart = RxList<CartItemModel>([]);
   static CartController instance = Get.find();
   RxBool obsecureText = true.obs;
   RxBool isLoading = false.obs;
-  Rx<double> totalCartPrice = 0.0.obs;
+  double totalCartPrice = 0;
   List<CartItemModel> checkOutModelList = [];
+  final now = new DateTime.now();
 
-  TextEditingController nameC = TextEditingController();
+  TextEditingController nameoelangganC = TextEditingController();
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -34,18 +37,9 @@ class CartController extends GetxController {
     // ever(cartController.Modelcart, changeCartTotalPricee());
   }
 
+// menambahkan peoduk ke keranjang
   void addProductToCart(ProductModel product) {
     try {
-      //               DocumentReference respons = firestore.collection("Cart").doc(product.id);
-      // respons.set({
-      //   "id": product.id,
-      //   "name": product.name,
-      //   "quantity": 1,
-      //   "price": product.harga,
-      //   "image": product.foto,
-      //   "category": product.category
-      // });
-      // Get.snackbar("Item added", "${product.name} was added to your cart");
       if (_addprod == null) {
         Get.snackbar("Check your cart", "${product.name} is already added");
       } else {
@@ -67,11 +61,6 @@ class CartController extends GetxController {
       debugPrint(e.toString());
     }
   }
-  //   FirebaseFirestore.instance.collection('decision')
-  // .where("team_member_emails", "array-contains", "snjmediastudio@gmail.com")
-  // userController.userModel.value.cart
-  //     .where((item) => item.productId == product.id)
-  //     .isNotEmpty;
 
   _addprod(ProductModel product) {
     FirebaseFirestore.instance
@@ -119,29 +108,22 @@ class CartController extends GetxController {
     });
   }
 
-  List<CartItemModel> get getCheckOutModelList {
-    return List.from(checkOutModelList);
-  }
-
-  // changeCartTotalPrice(CartItemModel item) {
-  //   totalCartPrice = 0;
-  //   if (cartController.Modelcart.isEmpty) {
-  //     cartController.Modelcart.forEach((Element) {
-  //       totalCartPrice + item.price;
-  //     });
-  //   }
-  // }
-  changeCartTotalPrice(CartItemModel item) {
-    totalCartPrice.value = 0.0;
-    if (cartController.Modelcart.isEmpty) {
-      cartController.Modelcart.forEach((cartItem) {
-        totalCartPrice += cartItem.cost;
-      });
+  void paymentAdd(CartItemModel cartItem) {
+    try {
+      if (nameC.text.isNotEmpty) {
+        DocumentReference respons =
+            firestore.collection("Transaksi").doc(nameC.text);
+        respons.set({
+          "nama": nameoelangganC.text,
+          "cart": cartItem.toJson(),
+          "total": subTotal,
+          "status": "0",
+          "createdAt": DateFormat('yMd').format(now),
+        });
+      }
+    } catch (e) {
+      Get.snackbar("Error", "gagal melakukan transaksi");
+      debugPrint(e.toString());
     }
   }
-  // totalcart(CartItemModel item) {
-  //   cartController.getCheckOutModelList.forEach((item) {
-  //     totalCartPrice += item.price * item.quantity;
-  //   });
-  // }
 }

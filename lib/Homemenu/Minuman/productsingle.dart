@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 
 import '../modelproduct.dart';
 
@@ -88,7 +89,9 @@ class SingleProductWidget extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    cartController.addProductToCart(product);
+                  },
                   child: Container(
                     width: 70,
                     height: 30,

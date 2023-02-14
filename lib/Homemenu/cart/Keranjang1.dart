@@ -7,40 +7,27 @@ import 'package:kantin/Homemenu/cart/cartitem.dart';
 import 'package:kantin/Homemenu/cart/controllercart.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 
-class SocialMedia extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: KeranjangPage(),
-    );
-  }
-}
-
 class KeranjangPage extends StatefulWidget {
   @override
   _KeranjangPageState createState() => _KeranjangPageState();
 }
 
+double subTotal = 0;
+
 class _KeranjangPageState extends State<KeranjangPage> {
-  int _ongkir = 100;
-  int _count = 1;
-  int _selectedItemIndex = 0;
-  int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
-
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
-
+  final CartItemModel  cartItem;
   @override
   Widget build(BuildContext context) {
+    
+    double subTotal = 0;
+
+    cartController.Modelcart.forEach((element) {
+      subTotal += element.price * element.quantity;
+    });
+
+    if (cartController.Modelcart.isEmpty) {
+      subTotal = 0;
+    }
     Get.put(CartController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -142,7 +129,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "Pay (\$${cartController.totalCartPrice.toStringAsFixed(2)})",
+                          "\$ ${subTotal.toStringAsFixed(2)}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -155,14 +142,16 @@ class _KeranjangPageState extends State<KeranjangPage> {
                     width: 150,
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      paymentAdd(cartItem)
+                    },
                     child: Text("bayar",
                         style: TextStyle(
                             color: Color.fromARGB(255, 6, 1, 61),
                             fontSize: 17,
                             fontWeight: FontWeight.bold)),
                     color: Colors.white,
-                  )
+                  ),
                 ],
               ),
             ),
