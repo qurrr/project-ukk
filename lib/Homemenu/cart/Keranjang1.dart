@@ -6,6 +6,7 @@ import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/cartitem.dart';
 import 'package:kantin/Homemenu/cart/controllercart.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
+import 'package:kantin/Homemenu/cart/Dialogpay.dart';
 
 class KeranjangPage extends StatefulWidget {
   @override
@@ -16,13 +17,6 @@ class _KeranjangPageState extends State<KeranjangPage> {
   Rx<CartItemModel> cartmodel = CartItemModel().obs;
   @override
   Widget build(BuildContext context) {
-    cartController.Modelcart.forEach((element) {
-      cartmodel.value.subTotal += element.price! * element.quantity!;
-    });
-
-    if (cartController.Modelcart.isEmpty) {
-      cartmodel.value.subTotal = 0;
-    }
     Get.put(CartController());
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -47,7 +41,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
               color: Color.fromARGB(255, 6, 1, 61)),
           centerTitle: true,
         ),
-        body: Stack(children: [
+        body: Stack(alignment: Alignment.center, children: [
           ListView(
             padding: EdgeInsets.only(top: 10),
             children: [
@@ -101,55 +95,24 @@ class _KeranjangPageState extends State<KeranjangPage> {
               )
             ],
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: EdgeInsets.only(left: 10),
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 6, 1, 61),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(5),
-                      topRight: Radius.circular(5))),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Total Bayar",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          "\$ ${cartmodel.value.subTotal.toStringAsFixed(2)}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 150,
-                  ),
-                  RaisedButton(
-                    onPressed: () {
+          Positioned(
+            top: 580,
+            child: FloatingActionButton(
+              onPressed: () {
+                CustomAlertDialog.confirmPelanggan(
+                    title: "TOTAL PESANAN",
+                    message: "\Rp ${cartController.subtotal}",
+                    onConfirm: () {
                       cartController.paymentAdd();
+                      Get.back();
+                      Get.back();
                     },
-                    child: Text("bayar",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 6, 1, 61),
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold)),
-                    color: Colors.white,
-                  ),
-                ],
-              ),
+                    onCancel: () {
+                      Get.back();
+                    },
+                    controller: cartController.namapelangganC);
+              },
+              child: Text("Bayar"),
             ),
           )
         ]));

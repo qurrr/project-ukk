@@ -21,7 +21,6 @@ class CartController extends GetxController {
   RxList<CartItemModel> Modelcart = RxList<CartItemModel>([]);
   Rx<CartItemModel> cartmodel = CartItemModel().obs;
   static CartController instance = Get.find();
-  int totalCartPrice = 0;
   final now = new DateTime.now();
 
   TextEditingController namapelangganC = TextEditingController();
@@ -118,13 +117,13 @@ class CartController extends GetxController {
           firestore.collection("Transaksi").doc(namapelangganC.text);
       respons.set({
         "nama": namapelangganC.text,
-        "total": totalCartPrice,
+        "total": subtotal,
         "status": 0,
         "createdAt": DateTime.now().toIso8601String(),
         "cart": Modelcart.map((data) => data.toJson()).toList(),
       });
       delete();
-
+      namapelangganC.clear();
       // }
     } catch (e) {
       Get.snackbar("Error", "gagal melakukan transaksi");
@@ -139,10 +138,13 @@ class CartController extends GetxController {
       await doc.reference.delete();
     }
   }
-  // Stream<List<CartItemModel>> Deletecart() => FirebaseFirestore.instance
-  //     .collection("Cart")
-  //     .snapshots()
-  //     .map((query) => query.docs
-  //         .map((item) => CartItemModel.fromMap(item.data()))
-  //         .toList());
+
+  get cartitem => cartController.Modelcart.map(
+      (element) => element.price! * element.quantity!).toList();
+
+  get subtotal => cartController.Modelcart.map(
+          (element) => element.price! * element.quantity!)
+      .toList()
+      .reduce((value, element) => value + element)
+      .toInt();
 }

@@ -13,7 +13,6 @@ class CartItemModel {
   late String? name;
   late int? quantity;
   late int? price;
-  late int? subTotal;
   late String? category;
 
   CartItemModel({
@@ -23,7 +22,6 @@ class CartItemModel {
     this.name,
     this.quantity,
     this.price,
-    this.subTotal,
   });
 
   CartItemModel.fromMap(Map<String, dynamic> data) {

@@ -56,7 +56,7 @@ import 'package:kantin/admin/tambah%20user.dart';
 import 'login/Login1.dart';
 import 'Homemenu/Menu.dart';
 import 'Homemenu/cart/Keranjang1.dart';
-import './Kasir.dart';
+import 'kasir/Kasir.dart';
 import './Detailpesanan.dart';
 import 'Manager/Manager.dart';
 import './Pendapatanharian.dart';
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.MENU,
+      initialRoute: Routes.KASIR,
       getPages: AppPages.routes,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

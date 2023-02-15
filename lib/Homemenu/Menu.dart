@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Homemenu/Minuman/Minuman.dart';
 import 'package:kantin/Homemenu/Makanan/Makanan.dart';
 import 'package:kantin/Homemenu/Coffe/Coffe.dart';
+import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Routing/Routes.dart';
 
 import 'cart/controllercart.dart';
@@ -64,7 +65,22 @@ class _Menu1PageState extends State<Menu1Page> {
           centerTitle: true,
           actions: [
             GestureDetector(
-              onTap: () => Get.toNamed(Routes.KERANJANG),
+              onTap: () {
+                if (cartController.Modelcart.isEmpty) {
+                  Get.defaultDialog(
+                    title: "peringatan",
+                    middleText: "Belum memesan",
+                    textConfirm: "Ok",
+                    onConfirm: () {
+                      Get.back();
+                    },
+                  );
+                } else {
+                  Get.toNamed(Routes.KERANJANG);
+                }
+              },
+
+              // => Get.toNamed(Routes.KERANJANG),
               child: Container(
                   margin: EdgeInsets.only(right: 10),
                   child: Icon(
