@@ -1,154 +1,99 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 import 'package:kantin/Homemenu/cart/modeltransaksi.dart';
+import 'package:kantin/Routing/Routes.dart';
+import 'package:kantin/kasir/controller/controller.dart';
 
 class KasirItemWidget extends StatelessWidget {
   final PaymentsModel itempemesanan;
 
-  const KasirItemWidget({Key? key, required this.itempemesanan}) : super(key: key);
+  const KasirItemWidget({Key? key, required this.itempemesanan})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.only(bottom: 15, left: 8, right: 8),
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 255, 255, 255),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(73, 0, 0, 0),
-            offset: const Offset(
-              0.0,
-              0.0,
-            ),
-            blurRadius: 10.0,
-            spreadRadius: 2.0,
-          ), //BoxShadow
-          BoxShadow(
-            color: Colors.black,
-            offset: const Offset(0.0, 0.0),
-            blurRadius: 0.0,
-            spreadRadius: 0.0,
-          ), //BoxShadow
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 65,
-            width: 65,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(80),
-              image: DecorationImage(
-                image: NetworkImage(
-                  cartItem.image.toString(),
-                ),
-                fit: BoxFit.cover,
+    return
+        // StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+        //   stream: kasirController.streampesananpelanggan(),
+        //   builder: (context, snapshot) {
+        //     switch (snapshot.connectionState) {
+        //       case ConnectionState.active:
+        //       case ConnectionState.done:
+        //         Map<String, dynamic> pesananP = snapshot.data!.data()!;
+        //         return
+        OutlinedButton(
+      // color: Colors.white,
+      // shape: RoundedRectangleBorder(
+      //   side: BorderSide(
+      //     color: Colors.white70,
+      //   ),
+      //   borderRadius: BorderRadius.circular(10),
+      // ),
+      onPressed: () {
+        Get.toNamed(
+          Routes.DETAILPESANAN,
+          arguments: itempemesanan,
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.only(top: 10, bottom: 10),
+        height: 90,
+        decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0.0, 0.0),
+                  color: Colors.black,
+                  blurRadius: 3.0,
+                  spreadRadius: 0.0)
+            ]),
+        child: Row(
+          children: [
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "atas nama",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    itempemesanan.nama.toString(),
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              color: Colors.red,
             ),
-          ),
-          SizedBox(
-            width: 7,
-          ),
-          Container(
-            height: 80,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  cartItem.name.toString(),
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                Text(
-                  cartItem.category.toString(),
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                  ),
-                ),
-                Text(
-                  cartItem.price.toString(),
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Color.fromARGB(255, 24, 38, 88),
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: 150,
             ),
-          ),
-          Container(
-            width: 130,
-            height: 80,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  cartItem.id.toString(),
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Color.fromARGB(255, 24, 38, 88),
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      top: 19,
-                    ),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // IconButton(
-                          // onPressed: _incrementCount,
-                          // icon:
-                          IconButton(
-                            onPressed: () {
-                              cartController.decreaseQuantity(cartItem);
-                            },
-                            icon: Icon(
-                              Icons.do_disturb_on_sharp,
-                              size: 25,
-                              color: Color.fromARGB(255, 24, 38, 88),
-                            ),
-                          ),
-                          // ),
-                          Container(
-                            width: 20,
-                            child: Text(
-                              cartItem.quantity.toString(),
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          // IconButton(
-                          //     onPressed: _decrementCount,
-                          //     icon:
-                          IconButton(
-                            onPressed: () {
-                              cartController.increaseQuantity(cartItem);
-                            },
-                            icon: Icon(
-                              Icons.add_circle_rounded,
-                              size: 25,
-                              color: Color.fromARGB(255, 24, 38, 88),
-                            ),
-                          ),
-                          // ),
-                        ]),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+            Text(
+              itempemesanan.total.toString(),
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
       ),
     );
+    //     case ConnectionState.waiting:
+    //       return Center(child: CircularProgressIndicator());
+    //     default:
+    //       return Center(child: Text("Error"));
+    //   }
+    // });
   }
 }

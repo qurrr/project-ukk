@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/kasir/pesanansekarang/pesanansekarang.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -148,66 +149,11 @@ class _KasirPageState extends State<KasirPage> {
         ),
         body: TabBarView(
           children: [
-            Pesananselesai(),
+            PesananSekarang(),
             Pesanansekarang(),
           ],
         ),
       ),
-    );
-  }
-
-  Widget Pesananselesai() {
-    return ListView(
-      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          height: 90,
-          decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    offset: const Offset(0.0, 0.0),
-                    color: Colors.black,
-                    blurRadius: 3.0,
-                    spreadRadius: 0.0)
-              ]),
-          child: Row(
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "atas nama",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Ahmad aldi",
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 150,
-              ),
-              Text(
-                "001",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-        )
-      ],
     );
   }
 

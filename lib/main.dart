@@ -57,7 +57,7 @@ import 'login/Login1.dart';
 import 'Homemenu/Menu.dart';
 import 'Homemenu/cart/Keranjang1.dart';
 import 'kasir/Kasir.dart';
-import './Detailpesanan.dart';
+import 'kasir/Detailpesanan.dart';
 import 'Manager/Manager.dart';
 import './Pendapatanharian.dart';
 import './Catatantransaksi.dart';
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.KASIR,
+      initialRoute: Routes.MENU,
       getPages: AppPages.routes,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

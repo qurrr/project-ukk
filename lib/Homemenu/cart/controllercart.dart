@@ -10,6 +10,7 @@ import 'package:kantin/Homemenu/Coffe/productsingle.dart';
 import 'package:kantin/Homemenu/cart/Keranjang1.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
+import 'package:kantin/kasir/controller/controller.dart';
 import 'package:kantin/toats/dialogtoast.dart';
 import 'package:kantin/Homemenu/Coffe/controller.dart';
 
@@ -120,7 +121,9 @@ class CartController extends GetxController {
         "total": subtotal,
         "status": 0,
         "createdAt": DateTime.now().toIso8601String(),
-        "cart": Modelcart.map((data) => data.toJson()).toList(),
+        "cart": Modelcart.map((data) => data.toJson()).toList(), //awal maslah
+        // Modelcart.map((data) => data.toJson()).toList()
+        // kasirController.payModel.value.cartItemsToJson()
       });
       delete();
       namapelangganC.clear();

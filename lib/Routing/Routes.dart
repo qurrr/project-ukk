@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kantin/admin/tambah%20user.dart';
+import '../Homemenu/cart/binding.dart';
+import '../kasir/binding/binding.dart';
 import '../login/Login1.dart';
 import '../Homemenu/Menu.dart';
 import '../Homemenu/cart/Keranjang1.dart';
 import '../kasir/Kasir.dart';
-import '../Detailpesanan.dart';
+import '../kasir/Detailpesanan.dart';
 import '../Manager/Manager.dart';
 import '../Pendapatanharian.dart';
 import '../Catatantransaksi.dart';
@@ -35,9 +37,15 @@ class AppPages {
 
   static final routes = [
     GetPage(
+      name: _Paths.DETAILPESANAN,
+      page: () => DetailPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: _Paths.KERANJANG,
       page: () => KeranjangPage(),
       transition: Transition.fadeIn,
+      binding: BindingCart(),
     ),
     GetPage(
       name: _Paths.LOGAKTIV,
@@ -101,15 +109,16 @@ class AppPages {
       transition: Transition.fadeIn,
     ),
     GetPage(
-      name: _Paths.KASIR,
-      page: () => KasirPage(),
-      transition: Transition.fadeIn,
-    ),
+        name: _Paths.KASIR,
+        page: () => KasirPage(),
+        transition: Transition.fadeIn,
+        binding: BindingKasir()),
   ];
 }
 
 abstract class Routes {
   Routes._();
+  static const DETAILPESANAN = _Paths.DETAILPESANAN;
   static const KERANJANG = _Paths.KERANJANG;
   static const LOGAKTIV = _Paths.LOGAKTIV;
   static const TAMBAHUSER = _Paths.TAMBAHUSER;
@@ -128,6 +137,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const DETAILPESANAN = '/detailpesanan';
   static const KERANJANG = '/keranjang';
   static const LOGAKTIV = '/logaktiv';
   static const TAMBAHUSER = '/tambahuser';

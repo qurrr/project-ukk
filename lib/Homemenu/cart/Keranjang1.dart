@@ -100,17 +100,17 @@ class _KeranjangPageState extends State<KeranjangPage> {
             child: FloatingActionButton(
               onPressed: () {
                 CustomAlertDialog.confirmPelanggan(
-                    title: "TOTAL PESANAN",
-                    message: "\Rp ${cartController.subtotal}",
-                    onConfirm: () {
-                      cartController.paymentAdd();
-                      Get.back();
-                      Get.back();
-                    },
-                    onCancel: () {
-                      Get.back();
-                    },
-                    controller: cartController.namapelangganC);
+                  title: "TOTAL PESANAN",
+                  message: "\Rp ${cartController.subtotal}",
+                  onConfirm: () {
+                    cartController.paymentAdd();
+                    Get.back();
+                    Get.back();
+                  },
+                  onCancel: () {
+                    Get.back();
+                  },
+                );
               },
               child: Text("Bayar"),
             ),

@@ -7,7 +7,6 @@ class CustomAlertDialog {
     required String message,
     required void Function() onConfirm,
     required void Function() onCancel,
-    required TextEditingController controller,
   }) {
     Get.defaultDialog(
       title: "TOTAL PEMBAYARAN",
