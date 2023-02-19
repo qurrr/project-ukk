@@ -123,6 +123,7 @@ class RegistController extends GetxController {
           Get.back();
         }
       } on FirebaseAuthException catch (e) {
+        print(e);
         isLoading.value = false;
         if (e.code == "sandi lemah") {
           //pesan jika password kurang dari 6

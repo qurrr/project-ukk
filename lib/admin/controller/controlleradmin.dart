@@ -95,4 +95,45 @@ class tambahusercontroller extends GetxController {
       textCancel: "NO",
     );
   }
+    void edituser(String nama, String email, String pass, String jenkel, String typeuser, String docID) 
+    async {
+    DocumentReference docData = firestore.collection("pengguna").doc(docID);
+     if (passC.text.isNotEmpty) {
+    try {
+      
+      await docData.update({
+            "nama": nama,
+            "email": email,
+            "password": pass,
+            "jeniskelamin": jenkel,
+            "typeuser": typeuser,
+            "created_at": DateTime.now().toIso8601String(),
+      });
+      Get.defaultDialog(
+        title: "berhasil",
+        middleText: "Berhasil mengubah data user",
+        onConfirm: () {
+          namaC.clear();
+          emailC.clear();
+          passC.clear();
+          jenkelC.clear();
+          selectedValue = null;
+          Get.back();
+          Get.back();
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+        isLoading.value = false;
+        if (e.code == "sandi lemah") {
+          //pesan jika password kurang dari 6
+          TostDialog.TostDil("Sandi terlalu pendek");
+        } else {
+          TostDialog.TostDil('error : ${e.code}');
+        }
+      }
+     }else {
+       TostDialog.TostDil("Kata sandi tidak boleh kosong");
+     }
+  }
+
 }

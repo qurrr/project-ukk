@@ -104,8 +104,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
                   message: "\Rp ${cartController.subtotal}",
                   onConfirm: () {
                     cartController.paymentAdd();
-                    Get.back();
-                    Get.back();
+                    
                   },
                   onCancel: () {
                     Get.back();

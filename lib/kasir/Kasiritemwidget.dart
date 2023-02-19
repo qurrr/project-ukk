@@ -34,6 +34,7 @@ class KasirItemWidget extends StatelessWidget {
       // ),
       onPressed: () {
         Get.toNamed(
+          
           Routes.DETAILPESANAN,
           arguments: itempemesanan,
         );

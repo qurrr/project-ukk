@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/kasir/pesanansekarang/pesanansekarang.dart';
+import 'package:kantin/kasir/pesananselesai/pesananselesai.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -150,7 +151,7 @@ class _KasirPageState extends State<KasirPage> {
         body: TabBarView(
           children: [
             PesananSekarang(),
-            Pesanansekarang(),
+            PesananSelesai(),
           ],
         ),
       ),

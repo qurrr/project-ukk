@@ -13,7 +13,7 @@ import '../Catatantransaksi.dart';
 import '../Manager/Editmenu/HomeMenu.dart';
 import '../admin/Admin.dart';
 import '../admin/tambah user.dart';
-import '../Edit user.dart';
+import '../admin/Edit user.dart';
 import '../admin/log aktivitas.dart';
 import '../regist/Register1.dart';
 import '../regist/controller/authregist.dart';
@@ -36,6 +36,11 @@ class AppPages {
   static const INITIAL = Routes.MENU;
 
   static final routes = [
+        GetPage(
+      name: _Paths.EDITUSER,
+      page: () => EdituserPage(),
+      transition: Transition.fadeIn,
+    ),
     GetPage(
       name: _Paths.DETAILPESANAN,
       page: () => DetailPage(),
@@ -118,6 +123,7 @@ class AppPages {
 
 abstract class Routes {
   Routes._();
+  static const EDITUSER = _Paths.EDITUSER;
   static const DETAILPESANAN = _Paths.DETAILPESANAN;
   static const KERANJANG = _Paths.KERANJANG;
   static const LOGAKTIV = _Paths.LOGAKTIV;
@@ -137,6 +143,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const EDITUSER = '/edituser';
   static const DETAILPESANAN = '/detailpesanan';
   static const KERANJANG = '/keranjang';
   static const LOGAKTIV = '/logaktiv';

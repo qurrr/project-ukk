@@ -26,21 +26,6 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   // final Map<String, dynamic> itempemesanan = Get.arguments;
   final PaymentsModel itempemesanan = Get.arguments;
-  int _ongkir = 100;
-  int _count = 1;
-  int _selectedItemIndex = 0;
-  int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
-
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,16 +88,17 @@ class _DetailPageState extends State<DetailPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      // Obx(() => Column(
-                      //       children: kasirController.payModel.value.cart!
-                      //           .map((item) => DetailPesanan(
-                      //                 cartItem: item,
-                      //               ))
-                      //           .toList(),
-                      //     )),
+                      Column(
+                            children: itempemesanan.cart!
+                                .map((item) => CardItemWidget(
+                                      cartItem: item,
+                                    ))
+                                .toList(),
+                          ),
                     ],
                   ),
-                  Align(
+                  (itempemesanan.status == 0)
+                        ? Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       padding: EdgeInsets.only(left: 10),
@@ -149,7 +135,9 @@ class _DetailPageState extends State<DetailPage> {
                             width: 110,
                           ),
                           RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              kasirController.updatedata(itempemesanan,user["nama"]);
+                            },
                             child: Text("telah bayar",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 6, 1, 61),
@@ -161,6 +149,8 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                   )
+                        : SizedBox(width: 0,),
+                  
                 ]),
               );
             case ConnectionState.waiting:

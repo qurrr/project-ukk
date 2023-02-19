@@ -64,7 +64,7 @@ import './Catatantransaksi.dart';
 import 'Manager/Editmenu/HomeMenu.dart';
 import 'admin/Admin.dart';
 import 'admin/tambah user.dart';
-import './Edit user.dart';
+import 'admin/Edit user.dart';
 import 'admin/log aktivitas.dart';
 import 'regist/Register1.dart';
 import './regist/controller/authregist.dart';

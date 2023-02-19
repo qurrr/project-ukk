@@ -14,7 +14,7 @@ class PaymentsModel {
   int? total;
   int? status;
   String? createdAt;
-  List<CartItemModel>? cart; //masalah
+  List<dynamic>? cart; //masalah
 
   PaymentsModel(
       {this.nama, this.total, this.status, this.createdAt, this.cart});

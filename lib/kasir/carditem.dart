@@ -3,17 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 
-class DetailPesanan extends StatelessWidget {
-  final CartItemModel cartItem;
+class CardItemWidget extends StatelessWidget {
+  final Map<String,dynamic> cartItem;
 
-  const DetailPesanan({Key? key, required this.cartItem}) : super(key: key);
+  const CardItemWidget({Key? key, required this.cartItem}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10),
-      margin: EdgeInsets.symmetric(horizontal: 25),
+      margin: EdgeInsets.only(top: 10),
       height: 90,
-      width: 180,
+     
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(15),
@@ -44,7 +44,7 @@ class DetailPesanan extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(80),
               image: DecorationImage(
-                image: AssetImage("assets/food/mie ayam.jpeg"),
+                image: NetworkImage(cartItem["image"].toString(),),
                 fit: BoxFit.cover,
               ),
               color: Colors.red,
@@ -59,19 +59,19 @@ class DetailPesanan extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Mie ayam",
+                  cartItem["name"].toString(),
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 17,
                   ),
                 ),
                 Text(
-                  "2x",
+                  "${cartItem["quantity"].toString()}x",
                   style: GoogleFonts.poppins(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Makanan",
+                  cartItem["category"].toString(),
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -88,7 +88,7 @@ class DetailPesanan extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "f01",
+                  cartItem["id"].toString(),
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -103,7 +103,7 @@ class DetailPesanan extends StatelessWidget {
                     top: 19,
                   ),
                   child: Text(
-                    "Rp.80.000",
+                    cartItem["price"].toString(),
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

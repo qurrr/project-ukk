@@ -251,21 +251,26 @@ class _AdminPageState extends State<AdminPage> {
                                     SizedBox(
                                       width: 40,
                                     ),
-                                    Container(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 10),
-                                      width: 120,
-                                      height: 40,
-                                      child: Text(
-                                        "Edit",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 17, color: Colors.white),
+                                    GestureDetector(
+                                      onTap: () => Get.toNamed(Routes.EDITUSER,
+                                      arguments: users[index].data(),
                                       ),
-                                      decoration: BoxDecoration(
-                                          color: Color.fromARGB(255, 7, 204, 0),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 10),
+                                        width: 120,
+                                        height: 40,
+                                        child: Text(
+                                          "Edit",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 17, color: Colors.white),
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: Color.fromARGB(255, 7, 204, 0),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                      ),
                                     ),
                                   ],
                                 ),

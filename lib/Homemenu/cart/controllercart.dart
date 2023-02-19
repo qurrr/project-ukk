@@ -121,12 +121,15 @@ class CartController extends GetxController {
         "total": subtotal,
         "status": 0,
         "createdAt": DateTime.now().toIso8601String(),
-        "cart": Modelcart.map((data) => data.toJson()).toList(), //awal maslah
-        // Modelcart.map((data) => data.toJson()).toList()
-        // kasirController.payModel.value.cartItemsToJson()
+        "cart": Modelcart.map((data) => data.toJson()).toList(), 
+        "kasir":"nama",
+        
+        
       });
       delete();
       namapelangganC.clear();
+      Get.back();
+      Get.back();
       // }
     } catch (e) {
       Get.snackbar("Error", "gagal melakukan transaksi");
