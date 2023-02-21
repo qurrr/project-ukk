@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantin/Manager/binding/bindings.dart';
 import 'package:kantin/admin/tambah%20user.dart';
 import '../Homemenu/cart/binding.dart';
 import '../kasir/binding/binding.dart';
@@ -8,8 +9,8 @@ import '../Homemenu/cart/Keranjang1.dart';
 import '../kasir/Kasir.dart';
 import '../kasir/Detailpesanan.dart';
 import '../Manager/Manager.dart';
-import '../Pendapatanharian.dart';
-import '../Catatantransaksi.dart';
+import '../Manager/Pendapatanharian.dart';
+import '../Manager/Catatantransaksi.dart';
 import '../Manager/Editmenu/HomeMenu.dart';
 import '../admin/Admin.dart';
 import '../admin/tambah user.dart';
@@ -36,7 +37,18 @@ class AppPages {
   static const INITIAL = Routes.MENU;
 
   static final routes = [
-        GetPage(
+    GetPage(
+      name: _Paths.CATATANTRANSAKSI,
+      page: () => CatatanPage(),
+      transition: Transition.fadeIn,
+      binding: Bindingmanager(),
+    ),
+    GetPage(
+      name: _Paths.PENDAPATANHARIAN,
+      page: () => PendapatanHPage(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: _Paths.EDITUSER,
       page: () => EdituserPage(),
       transition: Transition.fadeIn,
@@ -112,6 +124,7 @@ class AppPages {
       name: _Paths.MANAGER,
       page: () => ManagerPage(),
       transition: Transition.fadeIn,
+      binding: Bindingmanager(),
     ),
     GetPage(
         name: _Paths.KASIR,
@@ -123,6 +136,8 @@ class AppPages {
 
 abstract class Routes {
   Routes._();
+  static const CATATANTRANSAKSI = _Paths.CATATANTRANSAKSI;
+  static const PENDAPATANHARIAN = _Paths.PENDAPATANHARIAN;
   static const EDITUSER = _Paths.EDITUSER;
   static const DETAILPESANAN = _Paths.DETAILPESANAN;
   static const KERANJANG = _Paths.KERANJANG;
@@ -143,6 +158,8 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const CATATANTRANSAKSI = '/catatantransaki';
+  static const PENDAPATANHARIAN = '/pendapatanharian';
   static const EDITUSER = '/edituser';
   static const DETAILPESANAN = '/detailpesanan';
   static const KERANJANG = '/keranjang';

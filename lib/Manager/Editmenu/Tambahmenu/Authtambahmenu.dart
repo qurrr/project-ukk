@@ -57,7 +57,7 @@ class EditMenuAuth extends GetxController {
       respons.set({
         "id": idC.text,
         "nama": namaC.text,
-        "harga": hargaC.text,
+        "harga": hargaC.hashCode,
         "typeuser": selectedValue.toString(),
         "profil": avatarUrl,
         "created_at": DateTime.now().toIso8601String(),

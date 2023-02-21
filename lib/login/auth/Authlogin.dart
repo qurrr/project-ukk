@@ -40,6 +40,8 @@ class LoginController extends GetxController {
               } else {
                 Get.toNamed(Routes.MANAGER);
               }
+              emailC.clear();
+              passC.clear();
             } else {
               print('Document does not exist on the database');
             }

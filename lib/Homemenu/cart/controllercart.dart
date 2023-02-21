@@ -120,11 +120,10 @@ class CartController extends GetxController {
         "nama": namapelangganC.text,
         "total": subtotal,
         "status": 0,
-        "createdAt": DateTime.now().toIso8601String(),
-        "cart": Modelcart.map((data) => data.toJson()).toList(), 
-        "kasir":"nama",
-        
-        
+        "createdAt": DateFormat.yMd().format(now),
+        "cart": Modelcart.map((data) => data.toJson()).toList(),
+        "kasir": "nama",
+        "bulan": DateFormat.M().format(now),
       });
       delete();
       namapelangganC.clear();
@@ -145,8 +144,8 @@ class CartController extends GetxController {
     }
   }
 
-  get cartitem => cartController.Modelcart.map(
-      (element) => element.price! * element.quantity!).toList();
+  // get cartitem => cartController.Modelcart.map(
+  //     (element) => element.price! * element.quantity!).toList();
 
   get subtotal => cartController.Modelcart.map(
           (element) => element.price! * element.quantity!)

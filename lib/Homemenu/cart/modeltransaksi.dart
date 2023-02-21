@@ -9,11 +9,15 @@ class PaymentsModel {
   static const TOTAL = "total";
   static const STATUS = "status";
   static const CREATED_AT = "createdAt";
+  static const KASIR = "kasir";
+  static const BULAN = "bulan";
 
   String? nama;
   int? total;
   int? status;
   String? createdAt;
+  String? kasir;
+  String? bulan;
   List<dynamic>? cart; //masalah
 
   PaymentsModel(
@@ -30,6 +34,8 @@ class PaymentsModel {
     total = data[TOTAL];
     status = data[STATUS];
     cart = data[CART];
+    kasir = data[KASIR];
+    bulan = data[BULAN];
     createdAt = data[CREATED_AT];
   }
   List<CartItemModel> _convertCartItems(List cartFomDb) {
@@ -43,6 +49,15 @@ class PaymentsModel {
   }
 
   List cartItemsToJson() => cart!.map((item) => item.toJson()).toList();
+  Map toJson() => {
+        NAMA: nama,
+        TOTAL: total,
+        STATUS: status,
+        CART: cart,
+        KASIR: kasir,
+        BULAN: bulan,
+        CREATED_AT: createdAt,
+      };
 }
 
 // import 'package:cloud_firestore/cloud_firestore.dart';

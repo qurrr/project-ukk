@@ -252,8 +252,9 @@ class _AdminPageState extends State<AdminPage> {
                                       width: 40,
                                     ),
                                     GestureDetector(
-                                      onTap: () => Get.toNamed(Routes.EDITUSER,
-                                      arguments: users[index].data(),
+                                      onTap: () => Get.toNamed(
+                                        Routes.EDITUSER,
+                                        arguments: users[index].id,
                                       ),
                                       child: Container(
                                         padding:
@@ -264,10 +265,12 @@ class _AdminPageState extends State<AdminPage> {
                                           "Edit",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 17, color: Colors.white),
+                                              fontSize: 17,
+                                              color: Colors.white),
                                         ),
                                         decoration: BoxDecoration(
-                                            color: Color.fromARGB(255, 7, 204, 0),
+                                            color:
+                                                Color.fromARGB(255, 7, 204, 0),
                                             borderRadius:
                                                 BorderRadius.circular(5)),
                                       ),
@@ -303,34 +306,37 @@ class _AdminPageState extends State<AdminPage> {
           accountEmail:
               Text("Rangga@gmail.com", style: TextStyle(color: Colors.white)),
         ),
-        Container(
-          width: 190,
-          height: 55,
-          margin: EdgeInsets.only(left: 10, top: 15, right: 20),
-          padding: EdgeInsets.only(left: 15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Color.fromARGB(255, 24, 38, 88),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                Icons.logout,
-                size: 33,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Logout",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+        GestureDetector(
+          onTap: () => Get.toNamed(Routes.LOGIN),
+          child: Container(
+            width: 190,
+            height: 55,
+            margin: EdgeInsets.only(left: 10, top: 15, right: 20),
+            padding: EdgeInsets.only(left: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 24, 38, 88),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.logout,
+                  size: 33,
                   color: Colors.white,
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Logout",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
           ),
         )
       ]),

@@ -34,7 +34,7 @@ class tambahusercontroller extends GetxController {
               firestore.collection("pengguna").doc(iduser);
           respons.set({
             "id_user": iduser,
-            "nama": namaC.text,
+            "nama": namaC.text.trim(),
             "email": emailC.text,
             "password": passC.text,
             "jeniskelamin": jenkelC.text,
@@ -95,34 +95,36 @@ class tambahusercontroller extends GetxController {
       textCancel: "NO",
     );
   }
-    void edituser(String nama, String email, String pass, String jenkel, String typeuser, String docID) 
-    async {
+
+  void edituser(String nama, String email, String pass, String jenkel,
+      String typeuser, String docID) async {
     DocumentReference docData = firestore.collection("pengguna").doc(docID);
-     if (passC.text.isNotEmpty) {
-    try {
-      
-      await docData.update({
-            "nama": nama,
-            "email": email,
-            "password": pass,
-            "jeniskelamin": jenkel,
-            "typeuser": typeuser,
-            "created_at": DateTime.now().toIso8601String(),
-      });
-      Get.defaultDialog(
-        title: "berhasil",
-        middleText: "Berhasil mengubah data user",
-        onConfirm: () {
-          namaC.clear();
-          emailC.clear();
-          passC.clear();
-          jenkelC.clear();
-          selectedValue = null;
-          Get.back();
-          Get.back();
-        },
-      );
-    } on FirebaseAuthException catch (e) {
+    if (passC.text.isNotEmpty) {
+      try {
+        await FirebaseAuth.instance.currentUser!.updateEmail(email);
+        await FirebaseAuth.instance.currentUser!.updatePassword(nama);
+        await docData.update({
+          "nama": nama,
+          "email": email,
+          "password": pass,
+          "jeniskelamin": jenkel,
+          "typeuser": typeuser,
+          "created_at": DateTime.now().toIso8601String(),
+        });
+        Get.defaultDialog(
+          title: "berhasil",
+          middleText: "Berhasil mengubah data user",
+          onConfirm: () {
+            namaC.clear();
+            emailC.clear();
+            passC.clear();
+            jenkelC.clear();
+            selectedValue = null;
+            Get.back();
+            Get.back();
+          },
+        );
+      } on FirebaseAuthException catch (e) {
         isLoading.value = false;
         if (e.code == "sandi lemah") {
           //pesan jika password kurang dari 6
@@ -131,9 +133,13 @@ class tambahusercontroller extends GetxController {
           TostDialog.TostDil('error : ${e.code}');
         }
       }
-     }else {
-       TostDialog.TostDil("Kata sandi tidak boleh kosong");
-     }
+    } else {
+      TostDialog.TostDil("Kata sandi tidak boleh kosong");
+    }
   }
 
+  Future<DocumentSnapshot<Object?>> getDatauser(String docID) async {
+    DocumentReference edRef = firestore.collection("pengguna").doc(docID);
+    return edRef.get();
+  }
 }

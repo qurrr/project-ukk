@@ -44,6 +44,7 @@ dependencies:
   firebase_database: ^10.0.9
   firebase_storage: ^11.0.10
   logger: ^1.1.0
+  syncfusion_flutter_datepicker: ^20.4.50
 
 dev_dependencies:
   flutter_test:

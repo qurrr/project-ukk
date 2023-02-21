@@ -305,7 +305,6 @@ class _TambahMenState extends State<TambahMen> {
             onPressed: () {
               setState(() {
                 controller.Addfood();
-
               });
             },
           ),

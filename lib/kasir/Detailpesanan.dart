@@ -66,7 +66,8 @@ class _DetailPageState extends State<DetailPage> {
                     padding: EdgeInsets.only(top: 10, left: 15, right: 10),
                     children: [
                       Text(
-                          "${DateFormat('EEEE dd/MM/yyyy').format(DateTime.parse(itempemesanan.createdAt.toString()))}"),
+                        itempemesanan.createdAt.toString(),
+                      ),
                       SizedBox(
                         height: 15,
                       ),
@@ -89,68 +90,70 @@ class _DetailPageState extends State<DetailPage> {
                         height: 20,
                       ),
                       Column(
-                            children: itempemesanan.cart!
-                                .map((item) => CardItemWidget(
-                                      cartItem: item,
-                                    ))
-                                .toList(),
-                          ),
+                        children: itempemesanan.cart!
+                            .map((item) => CardItemWidget(
+                                  cartItem: item,
+                                ))
+                            .toList(),
+                      ),
                     ],
                   ),
                   (itempemesanan.status == 0)
-                        ? Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      padding: EdgeInsets.only(left: 10),
-                      height: 60,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 6, 1, 61),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5))),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            child: Column(
+                      ? Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10),
+                            height: 60,
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 6, 1, 61),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(5))),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  "Total Bayar",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  itempemesanan.total.toString(),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        "Total Bayar",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Text(
+                                        itempemesanan.total.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      )
+                                    ],
                                   ),
+                                ),
+                                SizedBox(
+                                  width: 110,
+                                ),
+                                RaisedButton(
+                                  onPressed: () {
+                                    kasirController.updatedata(
+                                        itempemesanan, user["nama"]);
+                                  },
+                                  child: Text("telah bayar",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 6, 1, 61),
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold)),
+                                  color: Colors.white,
                                 )
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 110,
-                          ),
-                          RaisedButton(
-                            onPressed: () {
-                              kasirController.updatedata(itempemesanan,user["nama"]);
-                            },
-                            child: Text("telah bayar",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 6, 1, 61),
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold)),
-                            color: Colors.white,
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                        : SizedBox(width: 0,),
-                  
+                        )
+                      : SizedBox(
+                          width: 0,
+                        ),
                 ]),
               );
             case ConnectionState.waiting:

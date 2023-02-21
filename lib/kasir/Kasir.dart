@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/kasir/pesanansekarang/pesanansekarang.dart';
 import 'package:kantin/kasir/pesananselesai/pesananselesai.dart';
+
+import '../Routing/Routes.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -45,15 +48,16 @@ class _KasirPageState extends State<KasirPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: buildsidebar(),
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: Container(
-              child: Icon(
-            Icons.menu,
-            size: 30,
-            color: Color.fromARGB(255, 6, 1, 61),
-          )),
+          // leading: Container(
+          //     child: Icon(
+          //   Icons.menu,
+          //   size: 30,
+          //   color: Color.fromARGB(255, 6, 1, 61),
+          // )),
           title: Text("Kasir"),
           titleTextStyle: TextStyle(
               fontSize: 30,
@@ -158,58 +162,54 @@ class _KasirPageState extends State<KasirPage> {
     );
   }
 
-  Widget Pesanansekarang() {
-    return ListView(
-      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          height: 90,
+  Widget buildsidebar() {
+    return Drawer(
+      child: ListView(children: [
+        UserAccountsDrawerHeader(
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    offset: const Offset(0.0, 0.0),
-                    color: Colors.black,
-                    blurRadius: 3.0,
-                    spreadRadius: 0.0)
-              ]),
-          child: Row(
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "atas nama",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Ahmad aldi",
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+            color: Color.fromARGB(255, 24, 38, 88),
+          ),
+          accountName: Text(
+            "Rangga Fatur (kasir)",
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+          accountEmail:
+              Text("Rangga@gmail.com", style: TextStyle(color: Colors.white)),
+        ),
+        GestureDetector(
+          onTap: () => Get.toNamed(Routes.LOGIN),
+          child: Container(
+            width: 190,
+            height: 55,
+            margin: EdgeInsets.only(left: 10, top: 15, right: 20),
+            padding: EdgeInsets.only(left: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 24, 38, 88),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.logout,
+                  size: 33,
+                  color: Colors.white,
                 ),
-              ),
-              SizedBox(
-                width: 150,
-              ),
-              Text(
-                "001",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Logout",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
           ),
         )
-      ],
+      ]),
     );
   }
 }
