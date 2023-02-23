@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -117,7 +118,9 @@ class _CatatanPageState extends State<CatatanPage> {
                     style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Rp 80.000",
+                    "80000",
+
+                    // kasirController.total2h.toString(),
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(

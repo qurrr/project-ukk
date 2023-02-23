@@ -189,16 +189,24 @@ class _ManagerPageState extends State<ManagerPage> {
           itemBuilder: (context, index) {
             tanggalnow tanggal = tgl[index];
             return GestureDetector(
-              onTap: () {
-                if (tanggal.tglakhir == "31 - 1") {
-                  Get.toNamed(Routes.PENDAPATANHARIAN,
-                  
-                  
-                  );
-                } else if (tanggal.tglakhir == "28 - 2") {
-                  Get.toNamed(Routes.PENDAPATANHARIAN);
-                }
-              },
+              onTap: () => Get.toNamed(
+                Routes.PENDAPATANHARIAN,
+                arguments: tanggal.bulan,
+              ),
+
+              // {
+              //   if (tanggal.tglakhir == "31 - 1") {
+              //     Get.toNamed(
+              //       Routes.PENDAPATANHARIAN,
+              //       arguments: tanggal.bulan,
+              //     );
+              //   } else if (tanggal.tglakhir == "28 - 2") {
+              //     Get.toNamed(
+              //       Routes.PENDAPATANHARIAN,
+              //       arguments: tanggal.bulan,
+              //     );
+              //   }
+              // },
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(

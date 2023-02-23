@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Manager/controller/controller.dart';
+import 'package:kantin/Manager/model/datenow.dart';
 import 'package:kantin/Routing/Routes.dart';
 import 'package:kantin/kasir/controller/controller.dart';
 
@@ -22,21 +23,8 @@ class PendapatanHPage extends StatefulWidget {
 }
 
 class _PendapatanHPageState extends State<PendapatanHPage> {
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
-  int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
 
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
+ final tanggalnow bulan = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +156,9 @@ class _PendapatanHPageState extends State<PendapatanHPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Text(
-              kasirController.total2.toString(),
+              "90000",
+
+              // kasirController.total2b.toString(),
               style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
             )
           ],

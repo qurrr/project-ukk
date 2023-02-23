@@ -124,6 +124,7 @@ class CartController extends GetxController {
         "cart": Modelcart.map((data) => data.toJson()).toList(),
         "kasir": "nama",
         "bulan": DateFormat.M().format(now),
+        "tanggal": DateFormat.d().format(now)
       });
       delete();
       namapelangganC.clear();

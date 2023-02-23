@@ -11,13 +11,15 @@ class PaymentsModel {
   static const CREATED_AT = "createdAt";
   static const KASIR = "kasir";
   static const BULAN = "bulan";
+  static const TANGGAL = "tanggal";
 
   String? nama;
   int? total;
   int? status;
   String? createdAt;
   String? kasir;
-  String? bulan;
+  int? bulan;
+  int? tanggal;
   List<dynamic>? cart; //masalah
 
   PaymentsModel(
@@ -36,6 +38,7 @@ class PaymentsModel {
     cart = data[CART];
     kasir = data[KASIR];
     bulan = data[BULAN];
+    tanggal = data[TANGGAL];
     createdAt = data[CREATED_AT];
   }
   List<CartItemModel> _convertCartItems(List cartFomDb) {
@@ -56,6 +59,7 @@ class PaymentsModel {
         CART: cart,
         KASIR: kasir,
         BULAN: bulan,
+        TANGGAL: tanggal,
         CREATED_AT: createdAt,
       };
 }
