@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:kantin/Homemenu/Coffe/productsingle.dart';
+import 'package:kantin/Homemenu/cart/cartcontrol.dart';
+import 'package:kantin/Manager/controller/controller.dart';
 import 'package:kantin/Manager/model/datenow.dart';
 import 'package:kantin/Routing/Routes.dart';
 import 'package:get/get.dart';
+import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -27,6 +31,8 @@ class _ManagerPageState extends State<ManagerPage> {
   DateTime findFirstDateOfTheMonth(DateTime dateTime) {
     return DateTime(dateTime.year, dateTime.month, 1);
   }
+
+  int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -85,20 +91,23 @@ class _ManagerPageState extends State<ManagerPage> {
                       SizedBox(
                         width: 15,
                       ),
-                      Container(
-                        padding: EdgeInsets.only(top: 5),
-                        height: 40,
-                        width: 180,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 32, 58),
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Text(
-                          "Log Aktivitas",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.LOGAKTIV),
+                        child: Container(
+                          padding: EdgeInsets.only(top: 5),
+                          height: 40,
+                          width: 180,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 0, 32, 58),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text(
+                            "Log Aktivitas",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       )
                     ],
@@ -181,75 +190,101 @@ class _ManagerPageState extends State<ManagerPage> {
   }
 
   Widget pendapatanb() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 600,
-      child: ListView.builder(
-          itemCount: tgl.length,
-          itemBuilder: (context, index) {
-            tanggalnow tanggal = tgl[index];
-            return GestureDetector(
-              onTap: () => Get.toNamed(
-                Routes.PENDAPATANHARIAN,
-                arguments: tanggal.bulan,
-              ),
-
-              // {
-              //   if (tanggal.tglakhir == "31 - 1") {
-              //     Get.toNamed(
-              //       Routes.PENDAPATANHARIAN,
-              //       arguments: tanggal.bulan,
-              //     );
-              //   } else if (tanggal.tglakhir == "28 - 2") {
-              //     Get.toNamed(
-              //       Routes.PENDAPATANHARIAN,
-              //       arguments: tanggal.bulan,
-              //     );
-              //   }
-              // },
-              child: Container(
-                margin: EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(0.0, 1.0),
-                        blurRadius: 5,
-                        spreadRadius: 0,
-                      )
-                    ]),
-                height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "${tanggal.tglawal.toString()}/${DateFormat.y().format(today)}",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "--",
-                      style: TextStyle(fontSize: 30),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "${tanggal.tglakhir.toString()}/${DateFormat.y().format(today)}",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }),
+    tanggalnow tanggal = tgl[index];
+    return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+      future: historyController.getalltotal(tanggal.bulan.toString()),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          var datatotal = snapshot.data!.docs;
+          const initialValue = 0.00;
+          final result = datatotal.fold<double>(initialValue,
+              (previousValue, element) => previousValue + element["total"]);
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            height: 600,
+            child: ListView.builder(
+                padding: EdgeInsets.only(bottom: 70, left: 10, right: 10),
+                itemCount: tgl.length,
+                itemBuilder: (context, index) {
+                  tanggalnow tanggal = tgl[index];
+                  return GestureDetector(
+                    onTap: () => Get.toNamed(Routes.CATATANTRANSAKSI,
+                        arguments: tanggal.tglawal),
+                    child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 5,
+                                spreadRadius: 0,
+                              )
+                            ]),
+                        height: 90,
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "${tanggal.tglawal.toString()}/${DateFormat.y().format(today)}",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "--",
+                                    style: TextStyle(fontSize: 30),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "${tanggal.tglakhir.toString()}/${DateFormat.y().format(today)}",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Total pendapatan",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 7,
+                                  ),
+                                  Text(
+                                    result.toStringAsFixed(1),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        )),
+                  );
+                }),
+          );
+        }
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }

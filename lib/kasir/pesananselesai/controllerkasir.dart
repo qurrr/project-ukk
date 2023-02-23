@@ -15,7 +15,8 @@ class HistoryKasir extends GetxController {
     super.onReady();
     print(getAllcart());
 
-    pesananselesai.bindStream(getAllcart());;
+    pesananselesai.bindStream(getAllcart());
+    ;
   }
 
   Stream<List<PaymentsModel>> getAllcart() => FirebaseFirestore.instance
@@ -25,22 +26,22 @@ class HistoryKasir extends GetxController {
       .map((query) => query.docs
           .map((item) => PaymentsModel.fromMap(item.data()))
           .toList());
-    
-  void updatedata(PaymentsModel itempemesanan, idkasir){
-    
-     FirebaseFirestore.instance.collection("Transaksi").doc(itempemesanan.nama).update({
-        "status": 1,
-        "kasir": idkasir,
-      });
-  }
 
+  void updatedata(PaymentsModel itempemesanan, idkasir) {
+    FirebaseFirestore.instance
+        .collection("Transaksi")
+        .doc(itempemesanan.nama)
+        .update({
+      "status": 1,
+      "kasir": idkasir,
+    });
+  }
 
   // Stream<PaymentsModel> getAllcart() => firestore
   //     .collection("Transaksi")
   //     .docs
   //     .snapshots()
   //     .map((snapshot) => PaymentsModel.fromSnapshot(snapshot));
-      
 
 // const snapshot = await firebase.firestore().collection('events').get()
 //     return snapshot.docs.map(doc => doc.data());
@@ -59,5 +60,5 @@ class HistoryKasir extends GetxController {
     String uid = auth.currentUser!.uid;
     yield* firestore.collection("pengguna").doc(uid).snapshots();
   }
-  
+
 }

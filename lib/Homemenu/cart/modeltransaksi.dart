@@ -18,8 +18,8 @@ class PaymentsModel {
   int? status;
   String? createdAt;
   String? kasir;
-  int? bulan;
-  int? tanggal;
+  String? bulan;
+  String? tanggal;
   List<dynamic>? cart; //masalah
 
   PaymentsModel(

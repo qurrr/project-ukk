@@ -23,9 +23,6 @@ class PendapatanHPage extends StatefulWidget {
 }
 
 class _PendapatanHPageState extends State<PendapatanHPage> {
-
- final tanggalnow bulan = Get.arguments;
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

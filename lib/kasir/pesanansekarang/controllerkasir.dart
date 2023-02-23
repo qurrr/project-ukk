@@ -14,7 +14,8 @@ class KasirController extends GetxController {
   onReady() {
     super.onReady();
     print(getAllcart());
-
+    // print(total2b);
+    // pesanans.bindStream(total2b);
     pesanans.bindStream(getAllcart());
     ;
   }
@@ -63,18 +64,18 @@ class KasirController extends GetxController {
   }
 
   //total pendapatan harian bulan 2
-  get total2b => kasirController.pesanans
-      .where((data) => data.bulan == 2)
-      .map((element) => element.total)
-      .toList()
-      .reduce((value, element) => value! + element!)!
-      .toInt();
-  get total2h => kasirController.pesanans
-      .where((data) => data.bulan == 2)
-      .where((element) => element.tanggal! < 0)
-      .where((element) => element.tanggal! > 30)
-      .map((element) => element.total)
-      .toList()
-      .reduce((value, element) => value! + element!)!
-      .toInt();
+  // get total2b => kasirController.pesanans
+  //     .where((data) => data.bulan == 2)
+  //     .map((element) => element.total)
+  //     .toList()
+  //     .reduce((value, element) => value! + element!)!
+  //     .toInt();
+  // get total2h => kasirController.pesanans
+  //     .where((data) => data.bulan == 2)
+  //     .where((element) => element.tanggal! < 0)
+  //     .where((element) => element.tanggal! > 30)
+  //     .map((element) => element.total)
+  //     .toList()
+  //     .reduce((value, element) => value! + element!)!
+  //     .toInt();
 }

@@ -19,43 +19,128 @@ import 'package:kantin/Homemenu/Coffe/controller.dart';
 class ManagerController extends GetxController {
   static ManagerController instance = Get.find();
   final now = new DateTime.now();
-  Rx<tanggalnow> tgl = tanggalnow().obs;
+  // Rx<bulannow> tgl = tanggalnow().obs;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  // onReady() {
-  //   super.onReady();
-  //   // print(getAlltransaksi());
-  //   // kasirController.pesanans.bindStream(getAlltransaksi());
-  //   // print(subtotal);
-  //   // ever(cartController.Modelcart, changeCartTotalPricee());
-  // }
 
-  // Stream<List<PaymentsModel>> getAlltransaksi() => FirebaseFirestore.instance
-  //     .collection("Transaksi")
-  //     .snapshots()
-  //     .map((query) => query.docs
-  //         .map((item) => PaymentsModel.fromMap(item.data()))
-  //         .toList());
+  onReady() {
+    super.onReady();
+    print(getAllhistory);
 
-  // void pendapatanharian(String bulan) {
-  //   firestore.collection("Transaksi").where("bulan", isEqualTo: bulan).get();
-  // }
+    // Modelcart.bindStream(getAllcart());
+    // ever(cartController.Modelcart, changeCartTotalPricee());
+  }
 
-  // get cartitem =>
-  //     kasirController.pesanans.map((element) => element.total).toList();
+  Future<QuerySnapshot<Map<String, dynamic>>> getalltotal(String bulan) async {
+    QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: bulan)
+          .where("status", isEqualTo: 1)
+          .get();
 
-  // get total => cartController.Modelcart.map(
-  //         (element) => element.price! * element.quantity!)
-  //     .toList()
-  //     .reduce((value, element) => value + element)
-  //     .toInt();
-  Future<QuerySnapshot<Map<String, dynamic>>> getAllPresence() async {
-    if (tgl.value.tglawal == "1 - 1") {
+      return query;
+  }
+
+
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllhistory(
+      String bulan) async {
+    if (bulan == "1 - 1") {
       QuerySnapshot<Map<String, dynamic>> query = await firestore
           .collection("Transaksi")
           .where("bulan", isEqualTo: "1")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+
+      return query;
+    } else if (bulan == "1 - 2") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "2")
+          .where("status", isEqualTo: 1)
           .orderBy("createdAt")
           .get();
       return query;
-    } else if (tgl.value.tglawal == "1 - 2") {}
+    } else if (bulan == "1 - 3") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "3")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 4") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "4")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 5") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "5")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 6") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "6")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 7") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "7")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 8") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "8")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 9") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "9")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 10") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "10")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else if (bulan == "1 - 11") {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "11")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    } else {
+      QuerySnapshot<Map<String, dynamic>> query = await firestore
+          .collection("Transaksi")
+          .where("bulan", isEqualTo: "12")
+          .where("status", isEqualTo: 1)
+          .orderBy("createdAt")
+          .get();
+      return query;
+    }
   }
 }
