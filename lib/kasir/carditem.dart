@@ -4,7 +4,7 @@ import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
 
 class CardItemWidget extends StatelessWidget {
-  final Map<String,dynamic> cartItem;
+  final Map<String, dynamic> cartItem;
 
   const CardItemWidget({Key? key, required this.cartItem}) : super(key: key);
   @override
@@ -13,7 +13,6 @@ class CardItemWidget extends StatelessWidget {
       padding: EdgeInsets.only(left: 10),
       margin: EdgeInsets.only(top: 10),
       height: 90,
-     
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(15),
@@ -44,7 +43,9 @@ class CardItemWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(80),
               image: DecorationImage(
-                image: NetworkImage(cartItem["image"].toString(),),
+                image: NetworkImage(
+                  cartItem["image"].toString(),
+                ),
                 fit: BoxFit.cover,
               ),
               color: Colors.red,

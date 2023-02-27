@@ -225,7 +225,7 @@ class _Register1PageState extends State<Register1Page> {
                                 value: controller.selectedValue,
                                 onChanged: (value) {
                                   setState(() {
-                                     controller.selectedValue = value.toString();
+                                    controller.selectedValue = value.toString();
                                   });
                                 },
                                 buttonHeight: 40,
@@ -239,7 +239,9 @@ class _Register1PageState extends State<Register1Page> {
                           height: 30,
                         ),
                         Container(
+                          width: MediaQuery.of(context).size.width,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 margin: EdgeInsets.only(left: 27),
@@ -261,7 +263,6 @@ class _Register1PageState extends State<Register1Page> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 110),
                                 height: 45,
                                 width: 130,
                                 decoration: BoxDecoration(

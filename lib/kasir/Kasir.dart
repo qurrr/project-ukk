@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kantin/Sidebar/sidebar.dart';
 import 'package:kantin/kasir/pesanansekarang/pesanansekarang.dart';
 import 'package:kantin/kasir/pesananselesai/pesananselesai.dart';
 
@@ -24,21 +25,7 @@ class KasirPage extends StatefulWidget {
 }
 
 class _KasirPageState extends State<KasirPage> {
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
   int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
-
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +35,10 @@ class _KasirPageState extends State<KasirPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        drawer: buildsidebar(),
+        drawer: SideBarWidget(),
         appBar: AppBar(
+          iconTheme:
+              IconThemeData(color: Color.fromARGB(255, 6, 1, 61), size: 28),
           backgroundColor: Colors.white,
           elevation: 0,
           // leading: Container(

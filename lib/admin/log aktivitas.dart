@@ -206,26 +206,26 @@ class _LogaktifitasPageState extends State<LogaktifitasPage> {
                                               ],
                                             ),
                                           ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "Riwayat login :",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  "1 menit",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )
-                                              ],
-                                            ),
-                                          )
+                                          // Container(
+                                          //   child: Row(
+                                          //     children: [
+                                          //       Text(
+                                          //         "Riwayat login :",
+                                          //         style: TextStyle(
+                                          //             fontSize: 15,
+                                          //             fontWeight:
+                                          //                 FontWeight.bold),
+                                          //       ),
+                                          //       Text(
+                                          //         "1 menit",
+                                          //         style: TextStyle(
+                                          //             fontSize: 15,
+                                          //             fontWeight:
+                                          //                 FontWeight.bold),
+                                          //       )
+                                          //     ],
+                                          //   ),
+                                          // )
                                         ],
                                       ),
                                     )

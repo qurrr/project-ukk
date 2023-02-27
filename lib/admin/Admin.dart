@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Routing/Routes.dart';
+import 'package:kantin/Sidebar/sidebar.dart';
 import 'package:kantin/admin/controller/controlleradmin.dart';
 
 class SocialMedia extends StatelessWidget {
@@ -47,7 +48,7 @@ class _AdminPageState extends State<AdminPage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          drawer: buildsidebar(),
+          drawer: SideBarWidget(),
           appBar: AppBar(
             iconTheme:
                 IconThemeData(color: Color.fromARGB(255, 6, 1, 61), size: 28),

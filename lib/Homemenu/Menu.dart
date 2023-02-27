@@ -7,6 +7,7 @@ import 'package:kantin/Homemenu/Makanan/Makanan.dart';
 import 'package:kantin/Homemenu/Coffe/Coffe.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Routing/Routes.dart';
+import 'package:kantin/Sidebar/sidebar.dart';
 
 import 'cart/controllercart.dart';
 
@@ -232,11 +233,10 @@ class _Menu1PageState extends State<Menu1Page> {
             color: Color.fromARGB(255, 24, 38, 88),
           ),
           accountName: Text(
-            "Rangga Fatur (kasir)",
+            "Pelanggan",
             style: TextStyle(fontSize: 25, color: Colors.white),
           ),
-          accountEmail:
-              Text("Rangga@gmail.com", style: TextStyle(color: Colors.white)),
+          accountEmail: null,
         ),
         GestureDetector(
           onTap: () => Get.toNamed(Routes.LOGIN),

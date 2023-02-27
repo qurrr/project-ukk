@@ -59,62 +59,34 @@ class _TambahMenState extends State<TambahMen> {
             },
           ),
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  controller.pickImage();
-                },
-                child: Container(
-                  padding: EdgeInsets.only(top: 10),
-                  margin: EdgeInsets.only(top: 10),
-                  height: 40,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            offset: Offset(0.0, 1.0),
-                            spreadRadius: 0,
-                            blurRadius: 2)
-                      ]),
-                  child: Text(
-                    "Upload foto",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 10),
-                margin: EdgeInsets.only(top: 10),
-                height: 40,
-                width: 150,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(0.0, 1.0),
-                          spreadRadius: 0,
-                          blurRadius: 2)
-                    ]),
-                child: Text(
-                  "Hapus foto",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
+        SizedBox(
+          height: 20,
+        ),
+        Center(
+          child: Container(
+            padding: EdgeInsets.only(top: 10),
+            margin: EdgeInsets.only(top: 10),
+            height: 40,
+            width: 150,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(0.0, 1.0),
+                      spreadRadius: 0,
+                      blurRadius: 2)
+                ]),
+            child: Text(
+              "Upload foto",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         SizedBox(
-          height: 30,
+          height: 20,
         ),
         Text(
           "ID",

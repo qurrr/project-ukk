@@ -125,7 +125,10 @@ class Login1Page extends GetView<LoginController> {
                           height: 10,
                         ),
                         Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 50,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 margin: EdgeInsets.only(left: 27),
@@ -149,7 +152,6 @@ class Login1Page extends GetView<LoginController> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 140),
                                 height: 45,
                                 width: 100,
                                 decoration: BoxDecoration(

@@ -9,6 +9,7 @@ import 'package:kantin/Manager/controller/controller.dart';
 import 'package:kantin/Manager/model/datenow.dart';
 import 'package:kantin/Routing/Routes.dart';
 import 'package:get/get.dart';
+import 'package:kantin/Sidebar/sidebar.dart';
 import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
@@ -42,8 +43,10 @@ class _ManagerPageState extends State<ManagerPage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-          drawer: buildsidebar(),
+          drawer: SideBarWidget(),
           appBar: AppBar(
+            iconTheme:
+                IconThemeData(color: Color.fromARGB(255, 6, 1, 61), size: 28),
             backgroundColor: Colors.white,
             elevation: 0,
             // leading: Container(
@@ -190,101 +193,65 @@ class _ManagerPageState extends State<ManagerPage> {
   }
 
   Widget pendapatanb() {
-    tanggalnow tanggal = tgl[index];
-    return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      future: historyController.getalltotal(tanggal.bulan.toString()),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          var datatotal = snapshot.data!.docs;
-          const initialValue = 0.00;
-          final result = datatotal.fold<double>(initialValue,
-              (previousValue, element) => previousValue + element["total"]);
-          return Container(
-            width: MediaQuery.of(context).size.width,
-            height: 600,
-            child: ListView.builder(
-                padding: EdgeInsets.only(bottom: 70, left: 10, right: 10),
-                itemCount: tgl.length,
-                itemBuilder: (context, index) {
-                  tanggalnow tanggal = tgl[index];
-                  return GestureDetector(
-                    onTap: () => Get.toNamed(Routes.CATATANTRANSAKSI,
-                        arguments: tanggal.tglawal),
-                    child: Container(
-                        margin: EdgeInsets.only(top: 20),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 5,
-                                spreadRadius: 0,
-                              )
-                            ]),
-                        height: 90,
-                        child: Column(
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 600,
+      child: ListView.builder(
+          padding: EdgeInsets.only(bottom: 70, left: 10, right: 10),
+          itemCount: tgl.length,
+          itemBuilder: (context, index) {
+            tanggalnow tanggal = tgl[index];
+            return GestureDetector(
+              onTap: () => Get.toNamed(Routes.CATATANTRANSAKSI,
+                  arguments: tanggal.tglawal),
+              child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(0.0, 1.0),
+                          blurRadius: 5,
+                          spreadRadius: 0,
+                        )
+                      ]),
+                  height: 50,
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "${tanggal.tglawal.toString()}/${DateFormat.y().format(today)}",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "--",
-                                    style: TextStyle(fontSize: 30),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "${tanggal.tglakhir.toString()}/${DateFormat.y().format(today)}",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                            Text(
+                              "${tanggal.tglawal.toString()}/${DateFormat.y().format(today)}",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "Total pendapatan",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    result.toStringAsFixed(1),
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            )
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "--",
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "${tanggal.tglakhir.toString()}/${DateFormat.y().format(today)}",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
                           ],
-                        )),
-                  );
-                }),
-          );
-        }
-        return Center(child: CircularProgressIndicator());
-      },
+                        ),
+                      ),
+                    ],
+                  )),
+            );
+          }),
     );
   }
 }

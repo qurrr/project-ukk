@@ -24,11 +24,16 @@ class _PesananSelesaiState extends State<PesananSelesai> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
-    return Obx(() => Column(
-            children: kasirHistory.pesananselesai.map((PaymentsModel pesanan) {
-          return KasirItemWidget(
-            itempemesanan: pesanan,
-          );
-        }).toList()));
+    return ListView(
+      children: [
+        Obx(() => Column(
+                children:
+                    kasirHistory.pesananselesai.map((PaymentsModel pesanan) {
+              return KasirItemWidget(
+                itempemesanan: pesanan,
+              );
+            }).toList()))
+      ],
+    );
   }
 }

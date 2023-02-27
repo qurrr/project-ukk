@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantin/Manager/Detailriwayat.dart';
 import 'package:kantin/Manager/binding/bindings.dart';
 import 'package:kantin/admin/tambah%20user.dart';
 import '../Homemenu/cart/binding.dart';
@@ -38,6 +39,11 @@ class AppPages {
 
   static final routes = [
     GetPage(
+      name: _Paths.DETAILRIWAYAT,
+      page: () => Detailriwayat(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: _Paths.CATATANTRANSAKSI,
       page: () => CatatanPage(),
       transition: Transition.fadeIn,
@@ -68,6 +74,8 @@ class AppPages {
       name: _Paths.LOGAKTIV,
       page: () => LogaktifitasPage(),
       transition: Transition.fadeIn,
+      binding: Tambahuserbinding(),
+      
     ),
     GetPage(
       name: _Paths.TAMBAHUSER,
@@ -136,6 +144,7 @@ class AppPages {
 
 abstract class Routes {
   Routes._();
+  static const DETAILRIWAYAT = _Paths.DETAILRIWAYAT;
   static const CATATANTRANSAKSI = _Paths.CATATANTRANSAKSI;
   static const PENDAPATANHARIAN = _Paths.PENDAPATANHARIAN;
   static const EDITUSER = _Paths.EDITUSER;
@@ -158,6 +167,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const DETAILRIWAYAT = '/detailriwayat';
   static const CATATANTRANSAKSI = '/catatantransaki';
   static const PENDAPATANHARIAN = '/pendapatanharian';
   static const EDITUSER = '/edituser';
