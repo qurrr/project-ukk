@@ -22,21 +22,7 @@ class TambahuserPage extends StatefulWidget {
 
 class _TambahuserPageState extends State<TambahuserPage> {
   final controller = Get.find<tambahusercontroller>();
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
   int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
-
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
 
   final List<String> items = [
     'admin',
@@ -257,7 +243,7 @@ class _TambahuserPageState extends State<TambahuserPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 260, top: 20, bottom: 20),
+                margin: EdgeInsets.only(left: 200, top: 20, bottom: 20),
                 height: 45,
                 width: 100,
                 decoration: BoxDecoration(
@@ -287,70 +273,5 @@ class _TambahuserPageState extends State<TambahuserPage> {
             ],
           )),
     );
-  }
-
-  Widget pendapatanh() {
-    return Container(
-        padding: EdgeInsets.only(left: 10, right: 10, top: 5),
-        margin: EdgeInsets.only(top: 20),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(0.0, 1.0),
-                blurRadius: 5,
-                spreadRadius: 0,
-              )
-            ]),
-        height: 90,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    "No transaksi",
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "001",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "pelanggan aris",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    "Total Bayar",
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Rp 80.000",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Kasir afi",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
   }
 }

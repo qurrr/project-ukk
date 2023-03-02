@@ -79,7 +79,7 @@ class _AdminPageState extends State<AdminPage> {
                               color: Color.fromARGB(255, 0, 32, 58),
                               borderRadius: BorderRadius.circular(5)),
                           height: 40,
-                          width: 180,
+                          width: 150,
                           child: Text(
                             "Tambah user",
                             textAlign: TextAlign.center,
@@ -98,7 +98,7 @@ class _AdminPageState extends State<AdminPage> {
                         child: Container(
                           padding: EdgeInsets.only(top: 5),
                           height: 40,
-                          width: 170,
+                          width: 150,
                           decoration: BoxDecoration(
                               color: Color.fromARGB(255, 0, 32, 58),
                               borderRadius: BorderRadius.circular(5)),
@@ -290,57 +290,6 @@ class _AdminPageState extends State<AdminPage> {
               ],
             ),
           )),
-    );
-  }
-
-  Widget buildsidebar() {
-    return Drawer(
-      child: ListView(children: [
-        UserAccountsDrawerHeader(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 24, 38, 88),
-          ),
-          accountName: Text(
-            "Rangga Fatur (kasir)",
-            style: TextStyle(fontSize: 25, color: Colors.white),
-          ),
-          accountEmail:
-              Text("Rangga@gmail.com", style: TextStyle(color: Colors.white)),
-        ),
-        GestureDetector(
-          onTap: () => Get.toNamed(Routes.LOGIN),
-          child: Container(
-            width: 190,
-            height: 55,
-            margin: EdgeInsets.only(left: 10, top: 15, right: 20),
-            padding: EdgeInsets.only(left: 15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 24, 38, 88),
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.logout,
-                  size: 33,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Logout",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
-        )
-      ]),
     );
   }
 }

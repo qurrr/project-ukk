@@ -22,6 +22,7 @@ class HistoryKasir extends GetxController {
   Stream<List<PaymentsModel>> getAllcart() => FirebaseFirestore.instance
       .collection("Transaksi")
       .where("status", isEqualTo: 1)
+      .orderBy("createdAt", descending: true)
       .snapshots()
       .map((query) => query.docs
           .map((item) => PaymentsModel.fromMap(item.data()))
@@ -60,5 +61,4 @@ class HistoryKasir extends GetxController {
     String uid = auth.currentUser!.uid;
     yield* firestore.collection("pengguna").doc(uid).snapshots();
   }
-
 }

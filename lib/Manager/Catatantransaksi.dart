@@ -64,7 +64,7 @@ class _CatatanPageState extends State<CatatanPage> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 590,
+                        height: 550,
                         child: ListView.builder(
                           itemCount: datahistory.length,
                           itemBuilder: (context, index) => GestureDetector(

@@ -194,7 +194,7 @@ class _Register1PageState extends State<Register1Page> {
                         ),
                         Obx(
                           () => Container(
-                            margin: EdgeInsets.only(left: 25, right: 220),
+                            margin: EdgeInsets.only(left: 25, right: 210),
                             padding: EdgeInsets.only(left: 5),
                             height: 30,
                             width: 180,

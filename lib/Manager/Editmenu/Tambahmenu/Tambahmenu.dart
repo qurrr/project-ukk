@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:kantin/Homemenu/Coffe/productsingle.dart';
 import 'package:kantin/Manager/Editmenu/Tambahmenu/Authtambahmenu.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:image_picker/image_picker.dart';
@@ -63,25 +64,30 @@ class _TambahMenState extends State<TambahMen> {
           height: 20,
         ),
         Center(
-          child: Container(
-            padding: EdgeInsets.only(top: 10),
-            margin: EdgeInsets.only(top: 10),
-            height: 40,
-            width: 150,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(0.0, 1.0),
-                      spreadRadius: 0,
-                      blurRadius: 2)
-                ]),
-            child: Text(
-              "Upload foto",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          child: GestureDetector(
+            onTap: () {
+              controller.pickImage();
+            },
+            child: Container(
+              padding: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.only(top: 10),
+              height: 40,
+              width: 150,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(0.0, 1.0),
+                        spreadRadius: 0,
+                        blurRadius: 2)
+                  ]),
+              child: Text(
+                "Upload foto",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ),
@@ -252,7 +258,7 @@ class _TambahMenState extends State<TambahMen> {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(left: 240, top: 20, bottom: 20),
+          margin: EdgeInsets.only(left: 200, top: 20, bottom: 20),
           height: 45,
           width: 120,
           decoration: BoxDecoration(

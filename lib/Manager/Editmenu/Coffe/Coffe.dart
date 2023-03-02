@@ -42,7 +42,7 @@ class _CoffeMenState extends State<CoffeMen> {
           return ListView.builder(
             itemCount: listmin.length,
             itemBuilder: (context, index) => Container(
-              margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+              margin: EdgeInsets.only(top: 15, left: 20, right: 20),
               padding: EdgeInsets.symmetric(horizontal: 7),
               height: 110,
               decoration: BoxDecoration(
@@ -127,7 +127,7 @@ class _CoffeMenState extends State<CoffeMen> {
                               controller.deleteProduct(listmin[index].id),
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
-                            width: 150,
+                            width: 120,
                             height: 40,
                             child: Text(
                               "Hapus",
@@ -148,7 +148,7 @@ class _CoffeMenState extends State<CoffeMen> {
                               arguments: listmin[index].id),
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
-                            width: 150,
+                            width: 120,
                             height: 40,
                             child: Text(
                               "Edit",

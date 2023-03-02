@@ -13,21 +13,8 @@ class MinumanMen extends StatefulWidget {
 
 class _MinumanMenState extends State<MinumanMen> {
   final controller = Get.find<Authminuman>();
-  int _ongkir = 100;
-  int _count = 1;
-  int _selectedItemIndex = 0;
-  int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
 
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
+  int active = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +29,7 @@ class _MinumanMenState extends State<MinumanMen> {
           return ListView.builder(
             itemCount: listmin.length,
             itemBuilder: (context, index) => Container(
-              margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+              margin: EdgeInsets.only(top: 15, left: 20, right: 20),
               padding: EdgeInsets.symmetric(horizontal: 7),
               height: 110,
               decoration: BoxDecoration(
@@ -127,7 +114,7 @@ class _MinumanMenState extends State<MinumanMen> {
                               controller.deleteProduct(listmin[index].id),
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
-                            width: 150,
+                            width: 120,
                             height: 40,
                             child: Text(
                               "Hapus",
@@ -148,7 +135,7 @@ class _MinumanMenState extends State<MinumanMen> {
                               arguments: listmin[index].id),
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
-                            width: 150,
+                            width: 120,
                             height: 40,
                             child: Text(
                               "Edit",
