@@ -66,7 +66,8 @@ class _EditmenumakState extends State<Editmenumak> {
                 controller.namaC.text = datadoc["nama"];
                 controller.hargaC.text = datadoc["harga"];
                 var Foto = datadoc["profil"];
-                var category = datadoc["typeuser"];
+                // var category = datadoc["typeuser"];
+                controller.selectedValue = datadoc["typeuser"];
                 return ListView(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 10),
                   children: [
@@ -259,6 +260,7 @@ class _EditmenumakState extends State<Editmenumak> {
                         textCapitalization: TextCapitalization.none,
                         decoration: InputDecoration(
                           hintText: ' Harga',
+                          // labelText: "$harga",
                           border: InputBorder.none,
                         ),
                       ),
@@ -283,7 +285,7 @@ class _EditmenumakState extends State<Editmenumak> {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton2(
                           hint: Text(
-                            "$category",
+                            controller.selectedValue.toString(),
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
@@ -363,6 +365,7 @@ class _EditmenumakState extends State<Editmenumak> {
                   ],
                 );
               }
+
               return Center(child: CircularProgressIndicator());
             },
           )),

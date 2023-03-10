@@ -841,9 +841,12 @@ int id uniform 0x7f0700bc
 int id up 0x7f0700bd
 int id useLogo 0x7f0700be
 int id view_tree_lifecycle_owner 0x7f0700bf
-int id wide 0x7f0700c0
-int id withText 0x7f0700c1
-int id wrap_content 0x7f0700c2
+int id view_tree_on_back_pressed_dispatcher_owner 0x7f0700c0
+int id view_tree_saved_state_registry_owner 0x7f0700c1
+int id view_tree_view_model_store_owner 0x7f0700c2
+int id wide 0x7f0700c3
+int id withText 0x7f0700c4
+int id wrap_content 0x7f0700c5
 int integer abc_config_activityDefaultDur 0x7f080000
 int integer abc_config_activityShortDur 0x7f080001
 int integer cancel_button_image_alpha 0x7f080002

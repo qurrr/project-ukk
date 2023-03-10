@@ -66,7 +66,7 @@ class _EditmenucofState extends State<Editmenucof> {
                 controller.namaC.text = datadoc["nama"];
                 controller.hargaC.text = datadoc["harga"];
                 var Foto = datadoc["profil"];
-                var category = datadoc["typeuser"];
+                controller.selectedValue = datadoc["typeuser"];
                 return ListView(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 10),
                   children: [
@@ -283,7 +283,7 @@ class _EditmenucofState extends State<Editmenucof> {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton2(
                           hint: Text(
-                            "$category",
+                            controller.selectedValue.toString(),
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,

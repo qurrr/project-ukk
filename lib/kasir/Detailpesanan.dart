@@ -135,7 +135,7 @@ class _DetailPageState extends State<DetailPage> {
                                 SizedBox(
                                   width: 100,
                                 ),
-                                RaisedButton(
+                                ElevatedButton(
                                   onPressed: () {
                                     kasirController.updatedata(
                                         itempemesanan, user["nama"]);
@@ -145,7 +145,7 @@ class _DetailPageState extends State<DetailPage> {
                                           color: Color.fromARGB(255, 6, 1, 61),
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold)),
-                                  color: Colors.white,
+                                  // color: Colors.white,
                                 )
                               ],
                             ),

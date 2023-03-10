@@ -48,7 +48,7 @@ class CartController extends GetxController {
           "id": product.id,
           "name": product.name,
           "quantity": 1,
-          "price": product.harga,
+          "price": int.parse(product.harga.toString()),
           "image": product.foto,
           "category": product.category,
           "cost": product.harga

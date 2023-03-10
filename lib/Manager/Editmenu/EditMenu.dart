@@ -25,7 +25,7 @@ class _EditMenuState extends State<EditMenu> {
     'Makanan',
     'Minuman',
     'Coffe',
-  ].obs;
+  ];
 
   @override
   Widget build(BuildContext context) {

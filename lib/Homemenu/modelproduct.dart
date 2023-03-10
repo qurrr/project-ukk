@@ -10,7 +10,7 @@ class ProductModel {
   String? id;
   String? name;
   String? category;
-  late int harga;
+  String? harga;
   String? foto;
 
   ProductModel(

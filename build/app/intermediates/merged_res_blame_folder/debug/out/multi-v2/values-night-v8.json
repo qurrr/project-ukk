@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\githubpentingg\\githubpentingg\\project-ukk\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "D:\\githubpentingg\\ukkafi nocaptcha\\project-ukk\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\githubpentingg\\githubpentingg\\project-ukk\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\githubpentingg\\ukkafi nocaptcha\\project-ukk\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
