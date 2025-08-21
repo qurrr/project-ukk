@@ -3,12 +3,9 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:get/get.dart';
 import 'package:kantin/Manager/Editmenu/Minuman/Authminuman.dart';
-import 'package:kantin/Manager/Editmenu/Makanan/Makanan.dart';
-import 'package:kantin/Manager/Editmenu/Minuman/Minuman.dart';
 
 class Editmenumin extends StatefulWidget {
   @override
@@ -17,9 +14,6 @@ class Editmenumin extends StatefulWidget {
 
 class _EditmenuminState extends State<Editmenumin> {
   final controller = Get.find<Authminuman>();
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
   int active = 0;
   String? selectedValue;
 
@@ -324,9 +318,13 @@ class _EditmenuminState extends State<Editmenumin> {
                           //   // }
                           // },
 
-                          buttonHeight: 40,
-                          buttonWidth: 140,
-                          itemHeight: 40,
+                          buttonStyleData: ButtonStyleData(
+                                  height: 40,
+                                  width: 140,
+                                ),
+                                menuItemStyleData: MenuItemStyleData(
+                                  height: 40,
+                                ),
                         ),
                       ),
                     ),

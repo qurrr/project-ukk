@@ -1,12 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:kantin/Homemenu/cart/cartcontrol.dart';
-import 'package:kantin/Homemenu/cart/modelcart.dart';
 import 'package:kantin/Homemenu/cart/modeltransaksi.dart';
 import 'package:kantin/Routing/Routes.dart';
-import 'package:kantin/kasir/controller/controller.dart';
 
 class KasirItemWidget extends StatelessWidget {
   final PaymentsModel itempemesanan;

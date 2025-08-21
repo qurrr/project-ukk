@@ -2,12 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:kantin/Homemenu/Coffe/productsingle.dart';
 import 'package:kantin/Manager/Editmenu/Tambahmenu/Authtambahmenu.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:image_picker/image_picker.dart';
 
 class TambahMen extends StatefulWidget {
   @override
@@ -16,9 +13,6 @@ class TambahMen extends StatefulWidget {
 
 class _TambahMenState extends State<TambahMen> {
   final controller = Get.find<EditMenuAuth>();
-  int _ongkir = 100;
-  int _count = 1;
-  int _selectedItemIndex = 0;
   int active = 0;
   final List<String> items = [
     'Makanan',
@@ -251,9 +245,13 @@ class _TambahMenState extends State<TambahMen> {
               //   // }
               // },
 
-              buttonHeight: 40,
-              buttonWidth: 140,
-              itemHeight: 40,
+             buttonStyleData: ButtonStyleData(
+                                  height: 40,
+                                  width: 140,
+                                ),
+                                menuItemStyleData: MenuItemStyleData(
+                                  height: 40,
+                                ),
             ),
           ),
         ),

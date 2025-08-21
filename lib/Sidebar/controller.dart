@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:kantin/Homemenu/cart/modeltransaksi.dart';
-import 'package:kantin/kasir/controller/controller.dart';
 
 class sidebarController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kantin/kasir/Kasir.dart';
-import '../main.dart';
 import 'package:flutter/services.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import './controller/authregist.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import 'package:kantin/Routing/Routes.dart';
 
 class Register1Page extends StatefulWidget {
   @override
@@ -23,7 +18,6 @@ class _Register1PageState extends State<Register1Page> {
   ].obs;
 
   bool showPassword = false;
-  int _selectedItemIndex = 0;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -228,9 +222,14 @@ class _Register1PageState extends State<Register1Page> {
                                     controller.selectedValue = value.toString();
                                   });
                                 },
-                                buttonHeight: 40,
-                                buttonWidth: 140,
-                                itemHeight: 40,
+                                buttonStyleData: ButtonStyleData(
+                                  height: 40,
+                                  width: 140,
+                                ),
+                                menuItemStyleData: MenuItemStyleData(
+                                  height: 40,
+                                ),
+                             
                               ),
                             ),
                           ),

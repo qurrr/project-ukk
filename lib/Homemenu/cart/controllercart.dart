@@ -3,16 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:kantin/Homemenu/Coffe/controlhomecoffe.dart';
-import 'package:kantin/Homemenu/Coffe/productsingle.dart';
-import 'package:kantin/Homemenu/cart/Keranjang1.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Homemenu/cart/modelcart.dart';
-import 'package:kantin/kasir/controller/controller.dart';
-import 'package:kantin/toats/dialogtoast.dart';
-import 'package:kantin/Homemenu/Coffe/controller.dart';
+
 
 import '../constlog.dart';
 import '../modelproduct.dart';
@@ -37,9 +31,10 @@ class CartController extends GetxController {
   }
 
 // menambahkan peoduk ke keranjang
-  void addProductToCart(ProductModel product) {
+  void addProductToCart(ProductModel product) async {
     try {
-      if (_addprod == null) {
+      DocumentSnapshot snapshot = await firestore.collection("Cart").doc(product.id).get();
+      if (snapshot.exists) {
         Get.snackbar("Check your cart", "${product.name} is already added");
       } else {
         DocumentReference respons =
@@ -61,6 +56,7 @@ class CartController extends GetxController {
     }
   }
 
+  // ignore: unused_element
   _addprod(ProductModel product) {
     FirebaseFirestore.instance
         .collection("Cart")
@@ -91,7 +87,7 @@ class CartController extends GetxController {
       docRef.delete();
     } else {
       removeCartItem(item);
-      if (item != null) item.quantity = item.quantity! - 1;
+       item.quantity = item.quantity! - 1;
       // item.quantity --;
       FirebaseFirestore.instance.collection("Cart").doc(item.id).update({
         "quantity": item.quantity,
@@ -101,7 +97,7 @@ class CartController extends GetxController {
 
   void increaseQuantity(CartItemModel item) {
     // removeCartItem(item);
-    if (item != null) item.quantity = item.quantity! + 1;
+   item.quantity = (item.quantity ?? 0) + 1;
     // item.quantity++;
     logger.i({"quantity": item.quantity});
     FirebaseFirestore.instance.collection("Cart").doc(item.id).update({

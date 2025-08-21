@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Manager/controller/controller.dart';
 import 'package:kantin/Routing/Routes.dart';
-import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
   @override
@@ -98,8 +96,7 @@ class _CatatanPageState extends State<CatatanPage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            (datahistory[index].data() as Map<
-                                                String, dynamic>)["createdAt"],
+                                            datahistory[index].data()["createdAt"],
                                             style: TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold),
@@ -112,13 +109,13 @@ class _CatatanPageState extends State<CatatanPage> {
                                             height: 10,
                                           ),
                                           Text(
-                                            "Kasir :${(datahistory[index].data() as Map<String, dynamic>)["kasir"]}",
+                                            "Kasir :${datahistory[index].data() ["kasir"]}",
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(
-                                            "Pelanggan :${(datahistory[index].data() as Map<String, dynamic>)["nama"]}",
+                                            "Pelanggan :${datahistory[index].data() ["nama"]}",
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold),
@@ -137,8 +134,7 @@ class _CatatanPageState extends State<CatatanPage> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(
-                                            (datahistory[index].data() as Map<
-                                                    String, dynamic>)["total"]
+                                            datahistory[index].data()["total"]
                                                 .toString(),
 
                                             // kasirController.total2h.toString(),

@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kantin/login/auth/Authlogin.dart';
-import '../main.dart';
 import 'package:flutter/services.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kantin/regist/controller/authregist.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:provider/provider.dart';
 import 'package:get/get.dart';
-import './auth/Authlogin.dart';
 import 'package:kantin/Routing/Routes.dart';
 
 class Login1Page extends GetView<LoginController> {
-  String? selectedValue;
-  bool showPassword = false;
-  int _selectedItemIndex = 0;
+ final String? selectedValue = null;
+ final bool showPassword = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

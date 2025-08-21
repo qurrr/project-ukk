@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kantin/Homemenu/Minuman/Minuman.dart';
 import 'package:kantin/Homemenu/Makanan/Makanan.dart';
 import 'package:kantin/Homemenu/Coffe/Coffe.dart';
 import 'package:kantin/Homemenu/cart/cartcontrol.dart';
 import 'package:kantin/Routing/Routes.dart';
-import 'package:kantin/Sidebar/sidebar.dart';
 
 import 'cart/controllercart.dart';
 
@@ -27,21 +25,9 @@ class Menu1Page extends StatefulWidget {
 }
 
 class _Menu1PageState extends State<Menu1Page> {
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
   int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
 
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {

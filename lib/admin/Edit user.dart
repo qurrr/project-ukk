@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:kantin/Homemenu/Coffe/productsingle.dart';
 import 'package:kantin/admin/controller/controlleradmin.dart';
 
 class SocialMedia extends StatelessWidget {
@@ -255,9 +253,13 @@ class _EdituserPageState extends State<EdituserPage> {
                               selectedValue = value as String;
                             });
                           },
-                          buttonHeight: 40,
-                          buttonWidth: 140,
-                          itemHeight: 40,
+                         buttonStyleData: ButtonStyleData(
+                                  height: 40,
+                                  width: 140,
+                                ),
+                                menuItemStyleData: MenuItemStyleData(
+                                  height: 40,
+                                ),
                         ),
                       ),
                     ),

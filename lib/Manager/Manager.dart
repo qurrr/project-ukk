@@ -1,16 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:kantin/Homemenu/Coffe/productsingle.dart';
-import 'package:kantin/Homemenu/cart/cartcontrol.dart';
-import 'package:kantin/Manager/controller/controller.dart';
 import 'package:kantin/Manager/model/datenow.dart';
 import 'package:kantin/Routing/Routes.dart';
 import 'package:get/get.dart';
 import 'package:kantin/Sidebar/sidebar.dart';
-import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
   @override

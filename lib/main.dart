@@ -50,25 +50,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart';
 import 'firebase_options.dart';
-import 'package:kantin/admin/tambah%20user.dart';
-import 'login/Login1.dart';
-import 'Homemenu/Menu.dart';
-import 'Homemenu/cart/Keranjang1.dart';
-import 'kasir/Kasir.dart';
-import 'kasir/Detailpesanan.dart';
-import 'Manager/Manager.dart';
-import 'Manager/Pendapatanharian.dart';
-import 'Manager/Catatantransaksi.dart';
-import 'Manager/Editmenu/HomeMenu.dart';
-import 'admin/Admin.dart';
-import 'admin/tambah user.dart';
-import 'admin/Edit user.dart';
-import 'admin/log aktivitas.dart';
-import 'regist/Register1.dart';
-import './regist/controller/authregist.dart';
-import './regist/models/player.dart';
 import 'package:get/get.dart';
 import 'Routing/Routes.dart';
 

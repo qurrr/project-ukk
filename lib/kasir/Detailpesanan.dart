@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:kantin/Homemenu/cart/modeltransaksi.dart';
 import 'package:kantin/kasir/carditem.dart';
 import 'package:kantin/kasir/controller/controller.dart';
@@ -20,6 +18,7 @@ class SocialMedia extends StatelessWidget {
 
 class DetailPage extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _DetailPageState createState() => _DetailPageState();
 }
 
@@ -29,7 +28,7 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
     return StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
@@ -43,19 +42,18 @@ class _DetailPageState extends State<DetailPage> {
                 appBar: AppBar(
                   backgroundColor: Colors.white,
                   elevation: 0,
-                  leading: Container(
-                      child: IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                      color: Color.fromARGB(255, 6, 1, 61),
-                    ),
-                  )),
+                  leading: IconButton(
+                                      onPressed: () {
+                  Get.back();
+                                      },
+                                      icon: const Icon(
+                  Icons.arrow_back,
+                  size: 30,
+                  color: Color.fromARGB(255, 6, 1, 61),
+                                      ),
+                                    ),
                   title: Text("Pesanan ${itempemesanan.nama.toString()}"),
-                  titleTextStyle: TextStyle(
+                  titleTextStyle: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w700,
                       color: Color.fromARGB(255, 6, 1, 61)),
@@ -68,7 +66,7 @@ class _DetailPageState extends State<DetailPage> {
                       Text(
                         itempemesanan.createdAt.toString(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Container(
@@ -77,11 +75,11 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                             Text(
                               "Pelanggan :${itempemesanan.nama.toString()}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                             Text('Kasir :${user["nama"]}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold)),
                           ],
                         ),

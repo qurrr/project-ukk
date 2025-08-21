@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:kantin/admin/controller/controlleradmin.dart';
 
@@ -17,6 +16,7 @@ class SocialMedia extends StatelessWidget {
 
 class TambahuserPage extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _TambahuserPageState createState() => _TambahuserPageState();
 }
 
@@ -32,7 +32,7 @@ class _TambahuserPageState extends State<TambahuserPage> {
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
     return DefaultTabController(
@@ -44,14 +44,14 @@ class _TambahuserPageState extends State<TambahuserPage> {
             leading: GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                  child: Icon(
+                  child: const Icon(
                 Icons.arrow_back,
                 size: 30,
                 color: Color.fromARGB(255, 6, 1, 61),
               )),
             ),
             title: Text("Tambah user"),
-            titleTextStyle: TextStyle(
+            titleTextStyle: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
                 color: Color.fromARGB(255, 6, 1, 61)),
@@ -236,9 +236,13 @@ class _TambahuserPageState extends State<TambahuserPage> {
                         controller.selectedValue = value.toString();
                       });
                     },
-                    buttonHeight: 40,
-                    buttonWidth: 140,
-                    itemHeight: 40,
+                    buttonStyleData: ButtonStyleData(
+                      height: 40,
+                      width: 140,
+                    ),
+                    menuItemStyleData: MenuItemStyleData(
+                      height: 40,
+                    ),
                   ),
                 ),
               ),

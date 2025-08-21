@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:get/get.dart';
-import 'package:kantin/Manager/Editmenu/Tambahmenu/Authtambahmenu.dart';
-import 'package:kantin/Manager/Editmenu/Makanan/Makanan.dart';
-import 'package:kantin/Manager/Editmenu/Minuman/Minuman.dart';
-import 'package:kantin/Manager/Editmenu/Tambahmenu/Tambahmenu.dart';
-import 'package:kantin/Manager/Editmenu/Coffe/Coffe.dart';
 
 class EditMenu extends StatefulWidget {
   @override
@@ -15,9 +9,6 @@ class EditMenu extends StatefulWidget {
 }
 
 class _EditMenuState extends State<EditMenu> {
-  int _ongkir = 100;
-  int _count = -0;
-  int _selectedItemIndex = 0;
   int active = 0;
   String? selectedValue;
 

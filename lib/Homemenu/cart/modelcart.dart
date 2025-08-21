@@ -1,4 +1,3 @@
-import 'package:kantin/Homemenu/modelproduct.dart';
 
 class CartItemModel {
   static const ID = "id";

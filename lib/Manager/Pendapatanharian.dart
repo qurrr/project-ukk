@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:kantin/Manager/controller/controller.dart';
-import 'package:kantin/Manager/model/datenow.dart';
 import 'package:kantin/Routing/Routes.dart';
-import 'package:kantin/kasir/controller/controller.dart';
 
 class SocialMedia extends StatelessWidget {
   @override

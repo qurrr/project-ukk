@@ -61,10 +61,8 @@ class CustomAlertDialog {
                       style: TextStyle(color: Colors.yellow),
                     ),
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      primary: Colors.blue,
+                      foregroundColor: Colors.green, padding: EdgeInsets.symmetric(vertical: 12), backgroundColor: Colors.blue,
                       elevation: 0,
-                      onPrimary: Colors.green,
                     ),
                   ),
                 ),
@@ -75,7 +73,7 @@ class CustomAlertDialog {
                     onPressed: onConfirm,
                     child: Text("BAYAR"),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.lightBlue,
+                      backgroundColor: Colors.lightBlue,
                       padding: EdgeInsets.symmetric(vertical: 12),
                       elevation: 0,
                     ),

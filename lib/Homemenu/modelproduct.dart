@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 class ProductModel {
   static const ID = "id";

@@ -1,11 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:kantin/Manager/Editmenu/Makanan/Authmakanan.dart';
 import 'package:get/get.dart';
-import 'package:kantin/Routing/Routes.dart';
-import 'package:kantin/Homemenu/Makanan/controlhomemakanan.dart';
 import 'package:kantin/Homemenu/Makanan/controller.dart';
 import 'package:kantin/Homemenu/Makanan/productsingle.dart';
 
@@ -17,21 +12,8 @@ class Homemakananview extends StatefulWidget {
 }
 
 class _HomemakananviewState extends State<Homemakananview> {
-  int _ongkir = 100;
-  int _count = 1;
-  int _selectedItemIndex = 0;
   int active = 0;
-  void _incrementCount() {
-    setState(() {
-      _count--;
-    });
-  }
 
-  void _decrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
